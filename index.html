@@ -30,6 +30,41 @@
 
 
   <style>
+
+  .wrapper { 
+    border : 2px solid #000; 
+    overflow:hidden;
+  }
+
+  .wrapper div {
+    min-height: 200px;
+    padding: 10px;
+  }
+  #one {
+    background-color: gray;
+    float:left; 
+    width: 80%;
+    border-right:2px solid #000;
+  }
+  #two { 
+    background-color: white;
+    overflow:hidden;
+    width: 20%
+    border:2px dashed #ccc;
+    min-height:170px;
+  }
+
+  @media screen and (max-width: 400px) {
+    #one { 
+      float: none;
+      margin-right:0;
+      width:auto;
+      border:0;
+      border-bottom:2px solid #000;    
+    }
+  }
+
+
     body {
       margin: 0;
       padding: 0;
@@ -42,12 +77,6 @@
     }
 
     .form {
-      position: fixed;
-      z-index: 100000;
-      display: flex;
-      left: 0;
-      right: 0;
-      bottom: 0;
       padding: 10px;
       background: rgba(0, 0, 0, 0.5);
       align-items: center;
@@ -89,14 +118,9 @@
     }
 
     .feed {
-      z-index: 100000000;
-      position: fixed;
+
       /* width: 150px;
   height: 150px; */
-      right: 0;
-      top: 100px;
-      bottom: 100px;
-      overflow: auto;
       font-size: 12px;
       /* width: 250px; */
       background: rgba(0, 0, 0, 0.7);
@@ -176,9 +200,9 @@
       iframe.frameborder = "0"
       iframe.allowfullscreen = "true"
       iframe.scrolling = "no"
-      iframe.height = "" + window.innerHeight;
-      iframe.width = "" + window.innerWidth;
-      document.body.appendChild(iframe)
+      iframe.height = "100%"
+      iframe.width = "100%"
+      document.getElementById("one").appendChild(iframe)
 
       // posting UI
       var ad = web3.eth.contract(contracts.sponsor.abi).at(contracts.sponsor.address);
@@ -219,23 +243,27 @@
 </head>
 
 <body>
-  <div id="message" class='form'>
-    <input id='msg' placeholder='Post a message, you get 10% back in P3C, broadcaster gets 90% in P3C. Get a piece of the cash flow!'></input>
-    <a href='#' id='done' class='btn'><i class='fas fa-kiwi-bird'></i> Pay $1</a>
-  </div>
-  <div id="chat" class='feed'>
-    <a href="#" id='handle'><i class='fas fa-angle-double-up'></i> hide</a>
-    <div class='content'>
-      <h2>
-        <i class='fas fa-kiwi-bird'></i> P3C.tv
-      </h2>
-      <div>Invest in your favorite streamers. Get more the better they do!</div>
-      <div class='well'>Your P3C: <span id="myCropTokens" class="count"></span> 57 P3C</div>
-      <div class='well'>P3C Price: <span id="myCropTokens" class="count"></span> $0.03</div>
-      <iframe allowfullscreen="" frameborder="0" height="65%" src="https://www.youtube.com/live_chat?v=fEvM-OUbaKs&embed_domain=p3c.io"
-        width="100%"></iframe><br />
+    <div id="one"></div>
+    <div id="two">  <div id="chat" class='feed'>
+        <a href="#" id='handle'><i class='fas fa-angle-double-up'></i> Hide</a>
+        <div class='content'>
+          <h2>
+            <i class='fas fa-kiwi-bird'></i> P3C.tv
+          </h2>
+          <div>Invest in your favorite streamers. Get more the better they do!</div>
+          <div class='well'>Your P3C: <span id="myCropTokens" class="count"></span> 57 P3C</div>
+          <div class='well'>P3C Price: <span id="myCropTokens" class="count"></span> $0.03</div>
+          <iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/live_chat?v=fEvM-OUbaKs&embed_domain=p3c.io"
+            width="100%"></iframe>
+        </div>
+      </div>
+      <div id="message" class='form'>
+          <input id='msg' placeholder='Post a message, you get 10% back in P3C, broadcaster gets 90% in P3C. Get a piece of the cash flow!'></input>
+          <a href='#' id='done' class='btn'><i class='fas fa-kiwi-bird'></i> Pay $1</a>
+        </div>
     </div>
-  </div>
+
+
 </body>
 <script src="lib/web3.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
