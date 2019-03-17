@@ -31,108 +31,127 @@
 
   <style>
     body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  font-family: "Helvetica Neue", helvetica, arial;
-}
-iframe {
-  border: none;
-}
-.form {
-  position: fixed;
-  z-index: 100000;
-  display: flex;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 10px;
-  background: rgba(0,0,0,0.5);
-  align-items: center;
-}
-.form #msg {
-  flex-grow: 1;
-  padding: 10px;
-}
-.form .btn {
-  text-decoration: none;
-  width: 100px;
-  color: black;
-  background:gold; 
-  text-align: center;
-  padding: 10px;
-}
-#modal {
-  position: fixed;
-  top: 40%;
-  left: 0;
-  right: 0;
-  text-align: center;
-  padding: 50px;
-}
-.hidden {
-  display: none;
-}
-.caption {
-  color: white;
-  padding: 10px;
-  border-radius: 40px;
-  margin-bottom: 30px;
-  background: rgba(0,0,0,0.7);
-}
-.feed {
-  z-index: 100000000;
-  position: fixed;
-  right: 0;
-  top: 100px;
-  bottom: 100px;
-  overflow: auto;
-  font-size: 12px;
-  width: 250px;
-  background: rgba(0,0,0,0.7);
-  color: white;
-  padding: 10px;
-}
-.feed.collapsed {
-  bottom: auto;
-}
-.feed.collapsed .content {
-  display: none;
-}
-.outlink {
-  color: silver;
-}
-.row {
-  padding: 10px 0;
-  border-top: 1px solid rgba(255,255,255,0.1);
-}
-h2 {
-  margin: 0 0 10px 0;
-}
-div {
-  display: block;
-  color: white;
-}
-a {
-  color: gold;
-}
-.well {
-  margin: 10px 0;
-  padding: 5px;
-  background: rgba(255,255,255,0.1);
-}
-#handle {
-  color: white;
-  display: block;
-  text-decoration: none;
-  text-align: right;
-  background: rgba(255,255,255,0.1);
-  padding: 10px;
-  margin-bottom: 10px;
-  font-weight: normal;
-  font-size: 14px;
-}
-</style>
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: "Helvetica Neue", helvetica, arial;
+    }
+
+    iframe {
+      border: none;
+    }
+
+    .form {
+      position: fixed;
+      z-index: 100000;
+      display: flex;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      align-items: center;
+    }
+
+    .form #msg {
+      flex-grow: 1;
+      padding: 10px;
+    }
+
+    .form .btn {
+      text-decoration: none;
+      width: 100px;
+      color: black;
+      background: gold;
+      text-align: center;
+      padding: 10px;
+    }
+
+    #modal {
+      position: fixed;
+      top: 40%;
+      left: 0;
+      right: 0;
+      text-align: center;
+      padding: 50px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .caption {
+      color: white;
+      padding: 10px;
+      border-radius: 40px;
+      margin-bottom: 30px;
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .feed {
+      z-index: 100000000;
+      position: fixed;
+      /* width: 150px;
+  height: 150px; */
+      right: 0;
+      top: 100px;
+      bottom: 100px;
+      overflow: auto;
+      font-size: 12px;
+      /* width: 250px; */
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px;
+    }
+
+    .feed.collapsed {
+      bottom: auto;
+    }
+
+    .feed.collapsed .content {
+      display: none;
+    }
+
+    .outlink {
+      color: silver;
+    }
+
+    .row {
+      padding: 10px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    h2 {
+      margin: 0 0 10px 0;
+    }
+
+    div {
+      display: block;
+      color: white;
+    }
+
+    a {
+      color: gold;
+    }
+
+    .well {
+      margin: 10px 0;
+      padding: 5px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    #handle {
+      color: white;
+      display: block;
+      text-decoration: none;
+      text-align: right;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      margin-bottom: 10px;
+      font-weight: normal;
+      font-size: 14px;
+    }
+  </style>
   <script>
     var convert = function (amount) {
       return new Promise(function (resolve, reject) {
@@ -184,13 +203,12 @@ a {
               })
           })
       })
-
       // Feed Hide/Show UI
       document.querySelector("#handle").addEventListener("click", function (e) {
         var feed = document.querySelector(".feed")
         feed.classList.toggle("collapsed")
         if (feed.classList.contains("collapsed")) {
-          document.querySelector("#handle").innerHTML = "<i class='fas fa-angle-double-down'></i> show</a>"
+          document.querySelector("#handle").innerHTML = "<i class='fas fa-angle-double-down'></i> Chat</a>"
         } else {
           document.querySelector("#handle").innerHTML = "<i class='fas fa-angle-double-up'></i> hide</a>"
         }
@@ -201,11 +219,11 @@ a {
 </head>
 
 <body>
-  <div class='form'>
+  <div id="message" class='form'>
     <input id='msg' placeholder='Post a message, you get 10% back in P3C, broadcaster gets 90% in P3C. Get a piece of the cash flow!'></input>
     <a href='#' id='done' class='btn'><i class='fas fa-kiwi-bird'></i> Pay $1</a>
   </div>
-  <div class='feed'>
+  <div id="chat" class='feed'>
     <a href="#" id='handle'><i class='fas fa-angle-double-up'></i> hide</a>
     <div class='content'>
       <h2>
@@ -214,17 +232,23 @@ a {
       <div>Invest in your favorite streamers. Get more the better they do!</div>
       <div class='well'>Your P3C: <span id="myCropTokens" class="count"></span> 57 P3C</div>
       <div class='well'>P3C Price: <span id="myCropTokens" class="count"></span> $0.03</div>
-      <iframe allowfullscreen="" frameborder="0" height="70%" src="https://www.youtube.com/live_chat?v=fEvM-OUbaKs&embed_domain=p3c.io" width="100%"></iframe><br/>
+      <iframe allowfullscreen="" frameborder="0" height="65%" src="https://www.youtube.com/live_chat?v=fEvM-OUbaKs&embed_domain=p3c.io"
+        width="100%"></iframe><br />
     </div>
   </div>
 </body>
 <script src="lib/web3.min.js"></script>
-<script src="lib/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $(function () {
+    $("#chat").draggable({
+      iframeFix: true
+    });
+  });
+</script>
 <script src="lib/alertify.min.js"></script>
 <script src="js/contracts.js"></script>
 <script src="js/farm.js"></script>
-<script>
-  getCropInfo(true)
-</script>
 
 </html>
