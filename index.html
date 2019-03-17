@@ -154,7 +154,7 @@ var feed = function(uri) {
   }).then(function(r) {
     var unconfirmed_feed = template({items: r.u})
     var confirmed_feed = template({items: r.c})
-    document.querySelector(".feed .items").innerHTML = unconfirmed_feed + confirmed_feed
+    // document.querySelector(".feed .items").innerHTML = unconfirmed_feed + confirmed_feed
   })
 }
 var convert = function(amount, unit) {
