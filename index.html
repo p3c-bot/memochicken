@@ -42,20 +42,17 @@
     }
 
     .form {
-      position: fixed;
-      z-index: 100000;
-      display: flex;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 10px;
       background: rgba(0, 0, 0, 0.5);
       align-items: center;
+      margin: 10px 0;
+      padding: 5px;
+      background: rgba(255, 255, 255, 0.1);
     }
 
     .form #msg {
       flex-grow: 1;
       padding: 10px;
+      width: 75%
     }
 
     .form .btn {
@@ -219,10 +216,6 @@
 </head>
 
 <body>
-  <div id="message" class='form'>
-    <input id='msg' placeholder='Post a message, you get 10% back in P3C, broadcaster gets 90% in P3C. Get a piece of the cash flow!'></input>
-    <a href='#' id='done' class='btn'><i class='fas fa-kiwi-bird'></i> Pay $1</a>
-  </div>
   <div id="chat" class='feed'>
     <a href="#" id='handle'><i class='fas fa-angle-double-up'></i> hide</a>
     <div class='content'>
@@ -232,6 +225,10 @@
       <div>Invest in your favorite streamers. Get more the better they do!</div>
       <div class='well'>Your P3C: <span id="myCropTokens" class="count"></span> 57 P3C</div>
       <div class='well'>P3C Price: <span id="myCropTokens" class="count"></span> $0.03</div>
+      <div id="message" class='form'>
+          <input id='msg' placeholder='Post - 10% to you in P3C, broadcaster gets 90%'></input>
+          <a href='#' id='done' class='btn'><i class='fas fa-kiwi-bird'></i> Pay $1</a>
+        </div>
       <iframe allowfullscreen="" frameborder="0" height="65%" src="https://www.youtube.com/live_chat?v=fEvM-OUbaKs&embed_domain=p3c.io"
         width="100%"></iframe><br />
     </div>
