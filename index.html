@@ -27,6 +27,8 @@
   <link rel="stylesheet" href="css/themes/semantic.min.css" />
   <!-- Bootstrap theme -->
   <link rel="stylesheet" href="css/themes/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/main.css">
+
 
 
   <style>
@@ -78,7 +80,7 @@
     }
 
     .caption {
-      color: white;
+      color: black;
       padding: 10px;
       border-radius: 40px;
       margin-bottom: 30px;
@@ -225,10 +227,11 @@
         <i class='fas fa-kiwi-bird'></i> P3C.tv
       </h2>
       <div>Invest in your favorite streamers. Get more the better they do!</div>
-      <div class='well'>Your P3C: <span id="myCropTokens" class="count"></span> 57 P3C</div>
-      <div class='well'>P3C Price: <span id="myCropTokens" class="count"></span> $0.03</div>
+      <div class='well'>Your P3C: <span id="myCropTokens" class="count"></span></div>
+      <div class='well'>Your Dividends: <span id="myCropDividends" class="count"></span></div>
+      <!-- <div class='well'>P3C Price: <span id="myCropTokens" class="count"></span> $0.03</div> -->
       <div id="message" class='form'>
-          <input id='msg' placeholder='Post - 10% to you in P3C, broadcaster gets 90%'></input>
+          <input id='msg' placeholder='10% to you in P3C, broadcaster gets 90%'></input>
           <a href='#' id='done' class='btn'><i class='fas fa-kiwi-bird'></i> $1</a>
         </div>
       <iframe allowfullscreen="" frameborder="0" height="65%" src="https://www.youtube.com/live_chat?v=cjP4v0N2YQI&embed_domain=p3c.io"
@@ -236,18 +239,24 @@
     </div>
   </div>
 </body>
+<script src="lib/jquery.min.js"></script>
 <script src="lib/web3.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
-  $(function () {
-    $("#chat").draggable({
-      iframeFix: true
-    });
-  });
+  // $(function () {
+  //   $("#chat").draggable({
+  //     iframeFix: true
+  //   });
+  // });
 </script>
 <script src="lib/alertify.min.js"></script>
+<script src="lib/alertify.min.js"></script>
+<script src="lib/semantic.min.js"></script>
 <script src="js/contracts.js"></script>
+<script src="js/util.js"></script>
 <script src="js/farm.js"></script>
+
+<script>
+  getCropInfo(true)
+</script>
 
 </html>
