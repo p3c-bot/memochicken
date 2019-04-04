@@ -16,8 +16,8 @@
   <script src='https://unpkg.com/datacash'></script>
   <script src='https://unpkg.com/databutton'></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
-    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+    integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
   <link rel="stylesheet" href="css/semantic.min.css">
   <!-- CSS -->
   <link rel="stylesheet" href="css/alertify.min.css" />
@@ -54,7 +54,7 @@
     .form #msg {
       flex-grow: 1;
       padding: 10px;
-      width: 82%
+      width: 75%
     }
 
     .form .btn {
@@ -190,8 +190,7 @@
             broadcast.purchaseBroadcast.sendTransaction(
               message,
               "0x501f0e393F1baaF5BfCC9c6baCF575C9ccb89644",
-              "0x5136958e5D57fa1E282fA976a3985Ca5B395132A",
-              {
+              "0x5136958e5D57fa1E282fA976a3985Ca5B395132A", {
                 from: web3.eth.accounts[0],
                 value: web3.toWei(amount)
               },
@@ -211,7 +210,7 @@
         if (feed.classList.contains("collapsed")) {
           document.querySelector("#handle").innerHTML = "<i class='fas fa-angle-double-down'></i> Chat</a>"
         } else {
-          document.querySelector("#handle").innerHTML = "<i class='fas fa-angle-double-up'></i> hide</a>"
+          document.querySelector("#handle").innerHTML = "<i class='fas fa-angle-double-up'></i> Hide</a>"
         }
         e.preventDefault()
       })
@@ -229,13 +228,15 @@
       <div>Invest in your favorite streamers. Get more the better they do!</div>
       <div class='well'>Your P3C: <span id="myCropTokens" class="count"></span></div>
       <div class='well'>Your Dividends: <span id="myCropDividends" class="count"></span></div>
+      <div class='well'>Broadcast: <span id="broadcast" class="count"></span></div>
+
       <!-- <div class='well'>P3C Price: <span id="myCropTokens" class="count"></span> $0.03</div> -->
       <div id="message" class='form'>
-          <input id='msg' placeholder='10% to you in P3C, broadcaster gets 90%'></input>
-          <a href='#' id='done' class='btn'><i class='fas fa-kiwi-bird'></i> $1</a>
-        </div>
-      <iframe allowfullscreen="" frameborder="0" height="65%" src="https://www.youtube.com/live_chat?v=cjP4v0N2YQI&embed_domain=p3c.io"
-        width="100%"></iframe><br />
+        <input id='msg' placeholder='10% to you in P3C, broadcaster gets 90%'></input>
+        <a href='#' id='done' class='btn'><i class='fas fa-kiwi-bird'></i> $0.05</a>
+      </div>
+      <iframe allowfullscreen="" frameborder="0" height="65%"
+        src="https://www.youtube.com/live_chat?v=cjP4v0N2YQI&embed_domain=p3c.io" width="100%"></iframe><br />
     </div>
   </div>
 </body>
@@ -249,14 +250,22 @@
   // });
 </script>
 <script src="lib/alertify.min.js"></script>
-<script src="lib/alertify.min.js"></script>
 <script src="lib/semantic.min.js"></script>
 <script src="js/contracts.js"></script>
 <script src="js/util.js"></script>
 <script src="js/farm.js"></script>
+<script src="js/broadcast.js"></script>
 
 <script>
-  getCropInfo(true)
+  // getCropInfo(true)
+  setTimeout(function () {
+    getCropInfo(true)
+    getBroadcast()
+  }, 500)
+  setInterval(function () {
+    getCropInfo(false)
+    getBroadcast()
+  }, 2000);
 </script>
 
 </html>
