@@ -6,8 +6,8 @@ $("#purchase").click(function () {
 	var hyperlinkText= $("#hyperlinkText").val();
 	var hyperlink= $("#hyperlink").val();
 
-	convert(100).then(function(amountToBuy){
-		ad.purchaseAd.sendTransaction(
+	convert(5).then(function(amountToBuy){
+		ad.purchaseBroadcast.sendTransaction(
 		imgLink,
 		text,
 		hyperlinkText,
