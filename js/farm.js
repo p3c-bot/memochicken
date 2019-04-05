@@ -47,7 +47,7 @@ function getMyCrop(onboard) {
                                 });
                             };
                             alertify.defaults.notifier.delay = 10000
-                            alertify.error('P3C View Mode. Please accept agreement.')
+                            alertify.error('P3C View Mode.')
                         }).set({
                         labels: {
                             ok: 'Accept',
@@ -81,7 +81,7 @@ function getMyCrop(onboard) {
                         });
                     };
                     myCropAddress = result;
-                    alertify.success('Connected to P3C.')
+                    alertify.success('Connecting to P3C.')
                     localStorage.setItem(web3.eth.accounts[0], result)
                 }
             }
