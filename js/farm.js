@@ -29,24 +29,39 @@ function getMyCrop(onboard) {
                         `,
                         //if ok deploy the crop
                         function () {
-                            if (typeof gtag !== 'undefined'){gtag('event', 'Wallet', {'event_label': 'Usage', 'event_category': 'NewFarmAgree'});};
+                            if (typeof gtag !== 'undefined') {
+                                gtag('event', 'Wallet', {
+                                    'event_label': 'Usage',
+                                    'event_category': 'NewFarmAgree'
+                                });
+                            };
                             alertify.success("Please approve the transaction from your wallet to get started.")
                             deployCrop(0, '0x0000000000000000000000000000000000000000', false)
                         },
                         // if cancel disable everything
                         function () {
-                            if (typeof gtag !== 'undefined'){gtag('event', 'Wallet', {'event_label': 'Usage', 'event_category': 'NewFarmDisagree'});};
+                            if (typeof gtag !== 'undefined') {
+                                gtag('event', 'Wallet', {
+                                    'event_label': 'Usage',
+                                    'event_category': 'NewFarmDisagree'
+                                });
+                            };
                             alertify.defaults.notifier.delay = 10000
                             alertify.error('P3C View Mode. Please accept agreement.')
-                    }).set({
+                        }).set({
                         labels: {
                             ok: 'Accept',
                             cancel: 'Decline'
                         }
                     });
                     //checks if web3 is loaded, but not logged in on saturn
-                    if (web3.eth.accounts[0] === undefined) { 
-                        if (typeof gtag !== 'undefined'){gtag('event', 'Wallet', {'event_label': 'Issue', 'event_category': 'SaturnLoggedOut'});};
+                    if (web3.eth.accounts[0] === undefined) {
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'Wallet', {
+                                'event_label': 'Issue',
+                                'event_category': 'SaturnLoggedOut'
+                            });
+                        };
                         $("#loginLogo").attr("src", "img/areugood.png");
                         $("#loginWarning").show();
                         $("#agreement").hide();
@@ -59,7 +74,12 @@ function getMyCrop(onboard) {
             } else {
                 // if we have already made an account but, it just failed to load.
                 if (result !== '0x0000000000000000000000000000000000000000') {
-                    if (typeof gtag !== 'undefined'){gtag('event', 'Wallet', {'event_label': 'Usage', 'event_category': 'RemoteFarmConnect'});};
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'Wallet', {
+                            'event_label': 'Usage',
+                            'event_category': 'RemoteFarmConnect'
+                        });
+                    };
                     myCropAddress = result;
                     alertify.success('Connected to P3C.')
                     localStorage.setItem(web3.eth.accounts[0], result)
@@ -67,7 +87,12 @@ function getMyCrop(onboard) {
             }
         });
     } else {
-        if (typeof gtag !== 'undefined'){gtag('event', 'Wallet', {'event_label': 'Usage', 'event_category': 'LocalFarmConnect'});};
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'Wallet', {
+                'event_label': 'Usage',
+                'event_category': 'LocalFarmConnect'
+            });
+        };
     }
 }
 
@@ -77,6 +102,9 @@ function getMyCropDividends() {
         if (!err) {
             change = (String(myCropDividends) !== String(result))
             myCropDividends = result;
+            if (p3cPriceUSD > 0) {
+                $("#myDividendsValue").replaceWith("<b id='myDividendsValue'> ($" + (p3cPriceUSD * (web3.fromWei(myCropDividends))).toFixed(3) + ")</b>")
+            }
             if (change) {
                 $("#myCropDividends").replaceWith("<b id='myCropDividends'>" + web3.fromWei(myCropDividends).toFixed(8) + "</b>")
                 $('#myCropDividends').transition({
@@ -95,8 +123,12 @@ function getMyCropTokens() {
         if (!err) {
             change = (String(myCropTokens) !== String(result))
             myCropTokens = result;
+            if (p3cPriceUSD > 0) {
+                $("#myCropValue").replaceWith("<b id='myCropValue'> ($" + (p3cPriceUSD * (web3.fromWei(myCropTokens))).toFixed(3) + ")</b>")
+            }
             if (change) {
-                $("#myCropTokens").replaceWith("<b id='myCropTokens'>" + numberWithCommas((web3.fromWei(myCropTokens) * .9999).toFixed(1)) + "</b>")
+                $("#myCropTokens").replaceWith("<b id='myCropTokens'>" + numberWithCommas((web3.fromWei(myCropTokens)).toFixed(2)) + "</b>")
+
                 p3cContract.sellPrice(function (e, r) {
                     let sellPrice = web3.fromWei(r)
                     myETCValue = (sellPrice * web3.fromWei(myCropTokens))
@@ -124,11 +156,12 @@ function getMyCropDisabled() {
     })
 }
 
+var p3cPriceUSD = 0;
+
 function getCropInfo(onboard) {
     getMyCrop(onboard)
     getMyCropTokens()
     getMyCropDividends()
-    getMyCropDisabled()
 }
 
 function deployCrop(amountToBuy, referrer, selfBuy) {
@@ -142,7 +175,12 @@ function deployCrop(amountToBuy, referrer, selfBuy) {
         },
         function (error, result) { //get callback from function which is your transaction key
             if (!error) {
-                if (typeof gtag !== 'undefined'){gtag('event', 'Wallet', {'event_label': 'Usage', 'event_category': 'NewFarmDeploy'});};
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'Wallet', {
+                        'event_label': 'Usage',
+                        'event_category': 'NewFarmDeploy'
+                    });
+                };
                 alertify.success("Welcome to P3C! Please wait 30 seconds for your crop to be created.")
                 playSound('register');
             } else {
@@ -186,7 +224,13 @@ function buyFromCrop(amountToBuy, referrer) {
             },
             function (error, result) { //get callback from function which is your transaction key
                 if (!error) {
-                    if (typeof gtag !== 'undefined'){gtag('event', 'Wallet', {'event_label': 'Usage', 'event_category': 'BuyP3C', 'value': amountToBuy});};
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'Wallet', {
+                            'event_label': 'Usage',
+                            'event_category': 'BuyP3C',
+                            'value': amountToBuy
+                        });
+                    };
                     alertify.success(amountToBuy + " ETC spent. Waiting for Blockchain.")
                     playSound('register');
                 } else {
@@ -208,7 +252,13 @@ function sellFromCrop(amountToSell) {
             },
             function (error, result) { //get callback from function which is your transaction key
                 if (!error) {
-                    if (typeof gtag !== 'undefined'){gtag('event', 'Wallet', {'event_label': 'Usage', 'event_category': 'SellP3C', 'value': amountToSell});};
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'Wallet', {
+                            'event_label': 'Usage',
+                            'event_category': 'SellP3C',
+                            'value': amountToSell
+                        });
+                    };
                     alertify.success(amountToSell + " P3C Sold. Waiting for Blockchain.")
                     console.log(result);
                 } else {
@@ -227,7 +277,12 @@ function reinvestFromCrop(referrer) {
             },
             function (error, result) { //get callback from function which is your transaction key
                 if (!error) {
-                    if (typeof gtag !== 'undefined'){gtag('event', 'Wallet', {'event_label': 'Usage', 'event_category': 'Reinvest'});};
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'Wallet', {
+                            'event_label': 'Usage',
+                            'event_category': 'Reinvest'
+                        });
+                    };
                     alertify.success("Reinvested P3C. Waiting for Blockchain.")
                     console.log(result);
                 } else {
@@ -245,7 +300,12 @@ function withdrawFromCrop() {
             },
             function (error, result) { //get callback from function which is your transaction key
                 if (!error) {
-                    if (typeof gtag !== 'undefined'){gtag('event', 'Wallet', {'event_label': 'Usage', 'event_category': 'Withdraw'});};
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'Wallet', {
+                            'event_label': 'Usage',
+                            'event_category': 'Withdraw'
+                        });
+                    };
                     alertify.success("Withdrawing prosperity. Waiting for Blockchain.")
                     console.log(result);
                 } else {
@@ -266,7 +326,12 @@ function transferFromCrop(destination, amountToTransfer) {
             },
             function (error, result) { //get callback from function which is your transaction key
                 if (!error) {
-                    if (typeof gtag !== 'undefined'){gtag('event', 'Wallet', {'event_label': 'Usage', 'event_category': 'Transfer'});};
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'Wallet', {
+                            'event_label': 'Usage',
+                            'event_category': 'Transfer'
+                        });
+                    };
                     alertify.success("Transfering " + amountToTransfer + " P3C to " + destination.substring(0, 7) + "...")
                     console.log(result);
                 } else {
@@ -274,4 +339,10 @@ function transferFromCrop(destination, amountToTransfer) {
                 }
             })
     })
+}
+
+function setPrice() {
+    $.getJSON('https://api.p3c.io/airdrop/info', function (json) {
+        p3cPriceUSD = Number(JSON.parse(JSON.stringify(json)).PriceUSD);
+    });
 }

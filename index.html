@@ -167,7 +167,6 @@
       })
     }
 
-
     document.addEventListener("DOMContentLoaded", function () {
       // iframe init
       var iframe = document.createElement("iframe");
@@ -226,13 +225,13 @@
         <i class='fas fa-kiwi-bird'></i> P3C.tv
       </h2>
       <div>Invest in your favorite streamers. Get more the better they do!</div>
-      <div class='well'>Your P3C: <span id="myCropTokens" class="count"></span></div>
-      <div class='well'>Your Dividends: <span id="myCropDividends" class="count"></span></div>
+      <div class='well'>Your P3C: <span id="myCropTokens" class="count"></span><span id="myCropValue" class="count"></span></div>
+      <div class='well'>Your Dividends: <span id="myCropDividends" class="count"></span><span id="myDividendsValue" class="count"></span></div>
       <div class='well'>Broadcast: <span id="broadcast" class="count"></span></div>
 
       <!-- <div class='well'>P3C Price: <span id="myCropTokens" class="count"></span> $0.03</div> -->
       <div id="message" class='form'>
-        <input id='msg' placeholder='10% to you in P3C, broadcaster gets 90%'></input>
+        <input id='msg' placeholder='P3C: 90% to streamer, 10% back. '></input>
         <a href='#' id='done' class='btn'><i class='fas fa-kiwi-bird'></i> $0.05</a>
       </div>
       <iframe allowfullscreen="" frameborder="0" height="65%"
@@ -261,6 +260,7 @@
   setTimeout(function () {
     getCropInfo(true)
     getBroadcast()
+    setPrice()
   }, 500)
   setInterval(function () {
     getCropInfo(false)
