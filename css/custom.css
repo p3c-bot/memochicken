@@ -3,57 +3,78 @@ body {
     padding: 0;
     overflow: hidden;
     font-family: "Helvetica Neue", helvetica, arial;
-  }
+}
 
-  iframe {
+.yt-live-chat-renderer.style-scope.yt-live-chat-app {
+    background: rgba(0, 0, 0, .1) !important
+}
+
+#message.yt-live-chat-text-message-renderer {
+    color: blue !important
+}
+
+#author-name.yt-live-chat-author-chip {
+    color: red !important
+}
+
+.yt-live-chat-header-renderer.style-scope.yt-live-chat-renderer {
+    background: rgba(0, 0, 0, 0) !important
+}
+
+#label-text.yt-dropdown-menu {
+    color: red !important
+}
+
+
+iframe {
     border: none;
-  }
+}
 
-  .form {
+.form {
     background: rgba(0, 0, 0, 0.5);
     align-items: center;
     margin: 10px 0;
     padding: 5px;
     background: rgba(255, 255, 255, 0.1);
-  }
+}
 
-  .form #msg {
+.form #msg {
     flex-grow: 1;
     padding: 10px;
     width: 75%
-  }
+}
 
-  .form .btn {
+.form .btn {
     text-decoration: none;
     width: 100px;
     color: black;
     background: gold;
     text-align: center;
     padding: 10px;
-  }
+}
 
-  #modal {
+#modal {
     position: fixed;
     top: 40%;
     left: 0;
     right: 0;
     text-align: center;
     padding: 50px;
-  }
+}
 
-  .hidden {
+.hidden {
     display: none;
-  }
+}
 
-  .caption {
+.caption {
     color: black;
     padding: 10px;
     border-radius: 40px;
     margin-bottom: 30px;
     background: rgba(0, 0, 0, 0.7);
-  }
+}
 
-  .feed {
+.feed {
     z-index: 100000000;
     position: fixed;
     /* width: 150px;
@@ -68,45 +89,45 @@ height: 150px; */
     background: rgba(0, 0, 0, 0.7);
     color: white;
     padding: 10px;
-  }
+}
 
-  .feed.collapsed {
+.feed.collapsed {
     bottom: auto;
-  }
+}
 
-  .feed.collapsed .content {
+.feed.collapsed .content {
     display: none;
-  }
+}
 
-  .outlink {
+.outlink {
     color: silver;
-  }
+}
 
-  /* .row {
+/* .row {
     padding: 10px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
   } */
 
-  h2 {
+h2 {
     margin: 0 0 10px 0;
-  }
+}
 
-  div {
+div {
     display: block;
     color: white;
-  }
+}
 
-  a {
+a {
     color: gold;
-  }
+}
 
-  .well {
+.well {
     margin: 10px 0;
-    padding: 5px;
+    padding: 4px;
     background: rgba(255, 255, 255, 0.1);
-  }
+}
 
-  #handle {
+#handle {
     color: white;
     display: block;
     text-decoration: none;
@@ -116,4 +137,4 @@ height: 150px; */
     margin-bottom: 10px;
     font-weight: normal;
     font-size: 14px;
-  }
+}
