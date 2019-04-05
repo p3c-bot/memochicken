@@ -1,6 +1,6 @@
 var broadcaster = web3.eth.contract(contracts.broadcaster.abi).at(contracts.broadcaster.address);
 
-$('#yotubeComments').attr('src', chatID);
+$('#youtubeComments').attr('src', chatID);
 
 
 var convert = function (amount) {

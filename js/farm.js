@@ -102,11 +102,11 @@ function getMyCropDividends() {
         if (!err) {
             change = (String(myCropDividends) !== String(result))
             myCropDividends = result;
-            if (p3cPriceUSD > 0) {
-                $("#myDividendsValue").replaceWith("<b id='myDividendsValue'> ($" + (p3cPriceUSD * (web3.fromWei(myCropDividends))).toFixed(3) + ")</b>")
-            }
+            // if (p3cPriceUSD > 0) {
+            //     $("#myDividendsValue").replaceWith("<b id='myDividendsValue'> ($" + (p3cPriceUSD * (web3.fromWei(myCropDividends))).toFixed(3) + ")</b>")
+            // }
             if (change) {
-                $("#myCropDividends").replaceWith("<b id='myCropDividends'>" + web3.fromWei(myCropDividends).toFixed(8) + "</b>")
+                $("#myCropDividends").replaceWith("<b id='myCropDividends'>" + web3.fromWei(myCropDividends).toFixed(8) + " ETC</b>")
                 $('#myCropDividends').transition({
                     animation: 'flash',
                     duration: '1s',

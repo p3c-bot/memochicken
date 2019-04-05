@@ -15,6 +15,7 @@
   <script src="https://api.moneybutton.com/moneybutton.js"></script>
   <script src='https://unpkg.com/datacash'></script>
   <script src='https://unpkg.com/databutton'></script> -->
+  <title>P3C.tv</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
     integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
@@ -30,6 +31,7 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/custom.css">
   <link rel="icon" type="image/png" href="img/phoenix.png">
+  
   <!-- GA -->
   <meta name="google-site-verification" content="DNUdvoQF9H6RE-YDglRHbC5UVL9AjAb9X8-YbMLriYc" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133170751-1"></script>
@@ -40,11 +42,9 @@
   gtag('config', 'UA-133170751-1');
   </script>
   <!-- END GA -->
-
+  
   <script>
- 
-
-    var videoID = "fEvM-OUbaKs"
+     var videoID = "fEvM-OUbaKs"
     var chatID = "https://www.youtube.com/live_chat?v=" + videoID + "&embed_domain=p3c.tv"
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -108,18 +108,26 @@
       <div class='well'>Your Dividends: <span id="myCropDividends" class="count"></span><span id="myDividendsValue" class="count"></span></div>
       <div class='well'>Broadcast: <span id="broadcast" class="count"></span></div>
 
-      <!-- <div class='well'>P3C Price: <span id="myCropTokens" class="count"></span> $0.03</div> -->
       <div id="message" class='form'>
         <input id='msg' placeholder='P3C: 90% to streamer, 10% back. '></input>
         <a href='#' id='done' class='btn'><i class='fas fa-kiwi-bird'></i> $0.05</a>
       </div>
-      <iframe allowfullscreen="" frameborder="0" height="65%" id="yotubeComments"
-        src="https://www.youtube.com/live_chat?v=fEvM-OUbaKs&embed_domain=p3c.tv" width="100%"></iframe><br />
+      <iframe allowfullscreen="" frameborder="0" height="65%" id="youtubeComments"
+        src="" width="100%"></iframe><br />
     </div>
   </div>
 </body>
 <script src="lib/jquery.min.js"></script>
 <script src="lib/web3.min.js"></script>
+<script src="lib/alertify.min.js"></script>
+<script src="lib/semantic.min.js"></script>
+
+<script src="js/contracts.js"></script>
+<script src="js/util.js"></script>
+<script src="js/farm.js"></script>
+<script src="js/broadcast.js"></script>
+<source src="/sound/register.mp3" type="audio/mpeg">
+<div id="sound"></div>
 <script>
 
   // $(function () {
@@ -128,15 +136,6 @@
   //   });
   // });
 </script>
-<script src="lib/alertify.min.js"></script>
-<script src="lib/semantic.min.js"></script>
-<script src="js/contracts.js"></script>
-<script src="js/util.js"></script>
-<script src="js/farm.js"></script>
-<script src="js/broadcast.js"></script>
-<source src="/sound/register.mp3" type="audio/mpeg">
-<div id="sound"></div>
-
 <script>
   setTimeout(function () {
     getCropInfo(true)
