@@ -35,3 +35,27 @@ function getBroadcast() {
         }
     });
 }
+
+document.querySelector("#done").addEventListener("click", function (e) {
+    let message = document.querySelector("#msg").value
+    convert(5)
+      .then(function (amount) {
+        console.log(myCropAddress)
+        broadcaster.purchaseBroadcast.sendTransaction(
+          message,
+          // streamer crop, this is set in stone
+          "0x501f0e393F1baaF5BfCC9c6baCF575C9ccb89644",
+          myCropAddress, {
+            from: web3.eth.accounts[0],
+            value: web3.toWei(amount)
+          },
+          function (error, result) { //get callback from function which is your transaction key
+            if (!error) {
+              console.log(result);
+              playSound('register');
+            } else {
+              console.log(error);
+            }
+          })
+      })
+  })
