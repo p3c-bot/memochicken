@@ -196,6 +196,7 @@
               function (error, result) { //get callback from function which is your transaction key
                 if (!error) {
                   console.log(result);
+                  playSound('register');
                 } else {
                   console.log(error);
                 }
@@ -254,9 +255,10 @@
 <script src="js/util.js"></script>
 <script src="js/farm.js"></script>
 <script src="js/broadcast.js"></script>
+<source src="/sound/register.mp3" type="audio/mpeg">
+<div id="sound"></div>
 
 <script>
-  // getCropInfo(true)
   setTimeout(function () {
     getCropInfo(true)
     getBroadcast()

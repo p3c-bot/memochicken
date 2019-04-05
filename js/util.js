@@ -3,8 +3,8 @@ const numberWithCommas = (x) => {
 }
 
 function playSound(filename) {
-    var mp3Source = '<source src="' + 'doc-assets/' + filename + '.mp3" type="audio/mpeg">';
-    var embedSource = '<embed hidden="true" autostart="true" loop="false" src="doc-assets/' + filename + '.mp3">';
+    var mp3Source = '<source src="' + 'sound/' + filename + '.mp3" type="audio/mpeg">';
+    var embedSource = '<embed hidden="true" autostart="true" loop="false" src="sound/' + filename + '.mp3">';
     document.getElementById("sound").innerHTML = '<audio autoplay="autoplay">' + mp3Source + embedSource + '</audio>';
 }
 
