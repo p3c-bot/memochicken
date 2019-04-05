@@ -1,5 +1,4 @@
-var broadcast = web3.eth.contract(contracts.broadcast.abi).at(contracts.broadcast.address);
-
+var broadcaster = web3.eth.contract(contracts.broadcaster.abi).at(contracts.broadcaster.address);
 
 $('#yotubeComments').attr('src', chatID);
 
@@ -20,10 +19,9 @@ var convert = function (amount) {
 }
 
 
-var currentBroadcast
-
+var currentBroadcast = ""
 function getBroadcast() {
-    broadcast.broadcast.call(function (err, result) {
+    broadcaster.broadcast.call(function (err, result) {
         if (!err) {
             change = (String(currentBroadcast) !== String(result))
             if (change) {

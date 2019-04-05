@@ -168,10 +168,6 @@
       iframe.width = "" + window.innerWidth;
       document.body.appendChild(iframe)
 
-      // posting UI
-      // var ad = web3.eth.contract(contracts.sponsor.abi).at(contracts.sponsor.address);
-      var broadcast = web3.eth.contract(contracts.broadcast.abi).at(contracts.broadcast.address);
-
       document.querySelector("#done").addEventListener("click", function (e) {
         let message = document.querySelector("#msg").value
         convert(5)
@@ -254,7 +250,6 @@
 <script>
   setTimeout(function () {
     getCropInfo(true)
-    getBroadcast()
     setPrice()
   }, 500)
   setInterval(function () {
