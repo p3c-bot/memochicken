@@ -24,7 +24,6 @@ function getBroadcast() {
     broadcaster.broadcast.call(function (err, result) {
         if (!err) {
             change = (String(currentBroadcast) !== String(result))
-            console.log(err, result, change)
             if (change) {
                 currentBroadcast = String(result)
                 $("#broadcast").replaceWith("<b id='broadcast'>" + currentBroadcast + "</b>")
