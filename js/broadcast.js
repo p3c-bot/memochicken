@@ -5,39 +5,34 @@ $.getJSON('http://api.p3c.io/test/', function (json) {
   var params = JSON.parse(JSON.stringify(json));
   console.log(params)
 
-
   var chatID = "https://www.youtube.com/live_chat?v=" + params.videoID + "&embed_domain=p3c.tv"
 
-  document.addEventListener("DOMContentLoaded", function () {
-    // iframe init
-    var iframe = document.createElement("iframe");
-    iframe.src = ("https://www.youtube.com/embed/" + params.videoID);
-    iframe.frameborder = "0"
-    iframe.allowfullscreen = "true"
-    iframe.scrolling = "no"
-    iframe.height = "" + window.innerHeight;
-    iframe.width = "" + window.innerWidth;
-    document.body.appendChild(iframe)
-  
-
-    $('#youtubeComments').attr('src', chatID);
+  $('#done').text(' $' + (Number(params.tipAmount)/100).toFixed(2));
 
 
-    // Feed Hide/Show UI
-    document.querySelector("#handle").addEventListener("click", function (e) {
-      var feed = document.querySelector(".feed")
-      feed.classList.toggle("collapsed")
-      if (feed.classList.contains("collapsed")) {
-        document.querySelector("#handle").innerHTML = "<i class='fas fa-angle-double-down'></i> Chat</a>"
-      } else {
-        document.querySelector("#handle").innerHTML = "<i class='fas fa-angle-double-up'></i> Hide</a>"
-      }
-      e.preventDefault()
-    })
+  // iframe init
+  var iframe = document.createElement("iframe");
+  iframe.src = ("https://www.youtube.com/embed/" + params.videoID);
+  iframe.frameborder = "0"
+  iframe.allowfullscreen = "true"
+  iframe.scrolling = "no"
+  iframe.height = "" + window.innerHeight;
+  iframe.width = "" + window.innerWidth;
+  document.body.appendChild(iframe)
+
+  $('#youtubeComments').attr('src', chatID);
+
+  // Feed Hide/Show UI
+  document.querySelector("#handle").addEventListener("click", function (e) {
+    var feed = document.querySelector(".feed")
+    feed.classList.toggle("collapsed")
+    if (feed.classList.contains("collapsed")) {
+      document.querySelector("#handle").innerHTML = "<i class='fas fa-angle-double-down'></i> Chat</a>"
+    } else {
+      document.querySelector("#handle").innerHTML = "<i class='fas fa-angle-double-up'></i> Hide</a>"
+    }
+    e.preventDefault()
   })
-
-
-
 
   document.querySelector("#done").addEventListener("click", function (e) {
     let message = document.querySelector("#msg").value
@@ -68,40 +63,22 @@ $.getJSON('http://api.p3c.io/test/', function (json) {
 });
 
 
-
-
-
-var convert = function (amount) {
-    return new Promise(function (resolve, reject) {
-        fetch("https://min-api.cryptocompare.com/data/price?fsym=ETC&tsyms=USD")
-            .then(function (res) {
-                return res.json()
-            })
-            .then(function (currency) {
-                // ETC Price in cents
-                let rate = Number(currency.USD) * 100
-                let converted = (amount / rate)
-                resolve(converted)
-            })
-    })
-}
-
-
 var currentBroadcast = ""
+
 function getBroadcast() {
-    broadcaster.broadcast.call(function (err, result) {
-        if (!err) {
-            change = (String(currentBroadcast) !== String(result))
-            if (change) {
-                currentBroadcast = String(result)
-                $("#broadcast").replaceWith("<b id='broadcast'>" + currentBroadcast + "</b>")
-                $('#broadcast').transition({
-                    animation: 'flash',
-                    duration: '1s',
-                });
-            }
-        }
-    });
+  broadcaster.broadcast.call(function (err, result) {
+    if (!err) {
+      change = (String(currentBroadcast) !== String(result))
+      if (change) {
+        currentBroadcast = String(result)
+        $("#broadcast").replaceWith("<b id='broadcast'>" + currentBroadcast + "</b>")
+        $('#broadcast').transition({
+          animation: 'flash',
+          duration: '1s',
+        });
+      }
+    }
+  });
 }
 
 
@@ -120,38 +97,6 @@ function getBroadcast() {
 //     }
 // });
 
-$.fn.draggable = function(){
-  var $this = this,
-  ns = 'draggable_'+(Math.random()+'').replace('.',''),
-  mm = 'mousemove.'+ns,
-  mu = 'mouseup.'+ns,
-  $w = $(window),
-  isFixed = ($this.css('position') === 'fixed'),
-  adjX = 0, adjY = 0;
 
-  $this.mousedown(function(ev){
-      var pos = $this.offset();
-      if (isFixed) {
-          adjX = $w.scrollLeft(); adjY = $w.scrollTop();
-      }
-      var ox = (ev.pageX - pos.left), oy = (ev.pageY - pos.top);
-      $this.data(ns,{ x : ox, y: oy });
-      $w.on(mm, function(ev){
-          ev.preventDefault();
-          ev.stopPropagation();
-          if (isFixed) {
-              adjX = $w.scrollLeft(); adjY = $w.scrollTop();
-          }
-          var offset = $this.data(ns);
-          $this.css({left: ev.pageX - adjX - offset.x, top: ev.pageY - adjY - offset.y});
-      });
-      $w.on(mu, function(){
-          $w.off(mm + ' ' + mu).removeData(ns);
-      });
-  });
-
-  return this;
-};
-
-$("[id=msg]").css(
-  "--yt-live-chat-primary-text-color", "aqua !important")
+// $("[id=msg]").css(
+//   "--yt-live-chat-primary-text-color", "aqua !important")
