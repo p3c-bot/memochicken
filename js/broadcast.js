@@ -1,6 +1,6 @@
 var broadcaster = web3.eth.contract(contracts.broadcaster.abi).at(contracts.broadcaster.address);
 
-$.getJSON('http://api.p3c.io/test/', function (json) {
+$.getJSON('https://api.p3c.io/test/', function (json) {
 
   var params = JSON.parse(JSON.stringify(json));
   console.log(params)
