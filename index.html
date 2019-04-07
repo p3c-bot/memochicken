@@ -47,43 +47,10 @@
     gtag('config', 'UA-133170751-1');
   </script>
   <!-- END GA -->
-
-  <script>
-    var streamerAddress = "0x501f0e393F1baaF5BfCC9c6baCF575C9ccb89644"
-    var tipAmount = 5;
-    var videoID = "fEvM-OUbaKs"
-
-    var chatID = "https://www.youtube.com/live_chat?v=" + videoID + "&embed_domain=p3c.tv"
-
-    document.addEventListener("DOMContentLoaded", function () {
-      // iframe init
-      var iframe = document.createElement("iframe");
-      iframe.src = ("https://www.youtube.com/embed/" + videoID);
-      iframe.frameborder = "0"
-      iframe.allowfullscreen = "true"
-      iframe.scrolling = "no"
-      iframe.height = "" + window.innerHeight;
-      iframe.width = "" + window.innerWidth;
-      document.body.appendChild(iframe)
-
-      // Feed Hide/Show UI
-      document.querySelector("#handle").addEventListener("click", function (e) {
-        var feed = document.querySelector(".feed")
-        feed.classList.toggle("collapsed")
-        if (feed.classList.contains("collapsed")) {
-          document.querySelector("#handle").innerHTML = "<i class='fas fa-angle-double-down'></i> Chat</a>"
-        } else {
-          document.querySelector("#handle").innerHTML = "<i class='fas fa-angle-double-up'></i> Hide</a>"
-        }
-        e.preventDefault()
-      })
-    })
-  </script>
 </head>
 
 <body>
   <div id="chat" class='feed'>
-
     <div class="container">
       <div class="col">
         <a href="#" id='handle'><i class='fas fa-angle-double-up'></i> Hide</a>

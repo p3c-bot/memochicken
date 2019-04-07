@@ -1,6 +1,74 @@
 var broadcaster = web3.eth.contract(contracts.broadcaster.abi).at(contracts.broadcaster.address);
 
-$('#youtubeComments').attr('src', chatID);
+$.getJSON('http://api.p3c.io/test/', function (json) {
+
+  var params = JSON.parse(JSON.stringify(json));
+  console.log(params)
+
+
+  var chatID = "https://www.youtube.com/live_chat?v=" + params.videoID + "&embed_domain=p3c.tv"
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // iframe init
+    var iframe = document.createElement("iframe");
+    iframe.src = ("https://www.youtube.com/embed/" + params.videoID);
+    iframe.frameborder = "0"
+    iframe.allowfullscreen = "true"
+    iframe.scrolling = "no"
+    iframe.height = "" + window.innerHeight;
+    iframe.width = "" + window.innerWidth;
+    document.body.appendChild(iframe)
+  
+
+    $('#youtubeComments').attr('src', chatID);
+
+
+    // Feed Hide/Show UI
+    document.querySelector("#handle").addEventListener("click", function (e) {
+      var feed = document.querySelector(".feed")
+      feed.classList.toggle("collapsed")
+      if (feed.classList.contains("collapsed")) {
+        document.querySelector("#handle").innerHTML = "<i class='fas fa-angle-double-down'></i> Chat</a>"
+      } else {
+        document.querySelector("#handle").innerHTML = "<i class='fas fa-angle-double-up'></i> Hide</a>"
+      }
+      e.preventDefault()
+    })
+  })
+
+
+
+
+  document.querySelector("#done").addEventListener("click", function (e) {
+    let message = document.querySelector("#msg").value
+    convert(params.tipAmount)
+      .then(function (amount) {
+        console.log(myCropAddress)
+        broadcaster.purchaseBroadcast.sendTransaction(
+          message,
+          // streamer crop, this is set in stone
+          params.streamerAddress,
+          myCropAddress, {
+            from: web3.eth.accounts[0],
+            value: web3.toWei(amount),
+            gasPrice: web3.toWei('0.000000003')
+          },
+          function (error, result) { //get callback from function which is your transaction key
+            if (!error) {
+              console.log(result);
+              playSound('register');
+            } else {
+              console.log(error);
+            }
+          })
+      })
+  })
+
+
+});
+
+
+
 
 
 var convert = function (amount) {
@@ -36,30 +104,7 @@ function getBroadcast() {
     });
 }
 
-document.querySelector("#done").addEventListener("click", function (e) {
-    let message = document.querySelector("#msg").value
-    convert(tipAmount)
-      .then(function (amount) {
-        console.log(myCropAddress)
-        broadcaster.purchaseBroadcast.sendTransaction(
-          message,
-          // streamer crop, this is set in stone
-          streamerAddress,
-          myCropAddress, {
-            from: web3.eth.accounts[0],
-            value: web3.toWei(amount),
-            gasPrice: web3.toWei('0.000000003')
-          },
-          function (error, result) { //get callback from function which is your transaction key
-            if (!error) {
-              console.log(result);
-              playSound('register');
-            } else {
-              console.log(error);
-            }
-          })
-      })
-  })
+
 
 //   jsPanel.create({
 //     theme:       'primary',
