@@ -38,16 +38,17 @@ function getBroadcast() {
 
 document.querySelector("#done").addEventListener("click", function (e) {
     let message = document.querySelector("#msg").value
-    convert(5)
+    convert(tipAmount)
       .then(function (amount) {
         console.log(myCropAddress)
         broadcaster.purchaseBroadcast.sendTransaction(
           message,
           // streamer crop, this is set in stone
-          "0x501f0e393F1baaF5BfCC9c6baCF575C9ccb89644",
+          streamerAddress,
           myCropAddress, {
             from: web3.eth.accounts[0],
-            value: web3.toWei(amount)
+            value: web3.toWei(amount),
+            gasPrice: web3.toWei('0.000000003')
           },
           function (error, result) { //get callback from function which is your transaction key
             if (!error) {
@@ -106,3 +107,6 @@ $.fn.draggable = function(){
 
   return this;
 };
+
+$("[id=msg]").css(
+  "--yt-live-chat-primary-text-color", "aqua !important")
