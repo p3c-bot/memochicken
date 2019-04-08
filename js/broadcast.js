@@ -1,9 +1,21 @@
 var broadcaster = web3.eth.contract(contracts.broadcaster.abi).at(contracts.broadcaster.address);
 
+
+var videoID = getUrlVars()["videoID"];
+var tipAmount = getUrlVars()["tip"];
+var crop = getUrlVars()["crop"]
+
 $.getJSON('https://api.p3c.io/test/', function (json) {
 
   var params = JSON.parse(JSON.stringify(json));
-  console.log(params)
+
+  // check if any overrides 
+  if (videoID && tipAmount && crop){
+    params.videoID = videoID
+    params.tipAmount = tipAmount
+    params.streamerAddress = crop
+  }
+
 
   var chatID = "https://www.youtube.com/live_chat?v=" + params.videoID + "&embed_domain=p3c.tv"
 
