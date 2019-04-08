@@ -1,0 +1,124 @@
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:creator" content="@_unwriter" />
+  <meta name="twitter:title" content="Memochicken" />
+  <meta name="twitter:description" content="Post a memo, feed the chicken." />
+  <meta name="twitter:image" content="https://unwriter.github.io/memochicken/screenshot.png" />
+  <meta property="og:url" content="https://unwriter.github.io/memochicken" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Memochicken" />
+  <meta property="og:description" content="Watch your favorite streamers. Invest in them!" />
+  <meta property="og:image" content="https://unwriter.github.io/memochicken/screenshot.png" />
+  <script src="https://api.moneybutton.com/moneybutton.js"></script>
+  <script src='https://unpkg.com/datacash'></script>
+  <script src='https://unpkg.com/databutton'></script> -->
+  <title>P3C.tv</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+    integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/semantic.min.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/alertify.min.css" />
+  <!-- Default theme -->
+  <link rel="stylesheet" href="css/themes/default.min.css" />
+  <!-- Semantic UI theme -->
+  <link rel="stylesheet" href="css/themes/semantic.min.css" />
+  <!-- Bootstrap theme -->
+  <link rel="stylesheet" href="css/themes/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/jspanel.min.css">
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="icon" type="image/png" href="img/phoenix.png">
+
+  <!-- GA -->
+  <meta name="google-site-verification" content="DNUdvoQF9H6RE-YDglRHbC5UVL9AjAb9X8-YbMLriYc" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133170751-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-133170751-1');
+  </script>
+  <!-- END GA -->
+</head>
+
+<body>
+  <div id="chat" class='feed'>
+    <div class="container">
+      <div class="col">
+        <a href="#" id='handle'><i class='fas fa-angle-double-up'></i> Hide</a>
+        <div class='content'>
+          <div class="row">
+            <h2>
+              <i class='fas fa-kiwi-bird'></i> P3C.tv
+            </h2>
+          </div>
+          <div class="row">
+
+            <div>Invest in your favorite streamers. Download <a target="_blank"
+                href="https://chrome.google.com/webstore/detail/saturn-wallet/nkddgncdjgjfcddamfgcmfnlhccnimig?hl=en">Saturn</a>.
+            </div>
+          </div>
+          <div class="row">
+            <div class='well'>Your P3C: <span id="myCropTokens" class="count"></span><span id="myCropValue"
+                class="count"></span></div>
+          </div>
+          <div class="row">
+            <div class='well'>Your Dividends: <span id="myCropDividends" class="count"></span><span
+                id="myDividendsValue" class="count"></span></div>
+          </div>
+          <div class="row">
+            <div class='well'>Broadcast: <span id="broadcast" class="count"></span></div>
+          </div>
+
+          <div id="message" class='form'>
+            <input class="sponsor-msg" id='msg' placeholder='P3C: 90% to streamer, 10% back. '></input>
+            <a href='#' id='done' class='btn'><i class='fas fa-kiwi-bird'></i> $0.05</a>
+          </div>
+          <iframe allowfullscreen="" frameborder="0" height="65%" id="youtubeComments" src=""
+            width="100%"></iframe><br />
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script src="lib/jquery.min.js"></script>
+<script src="lib/web3.min.js"></script>
+<script src="lib/alertify.min.js"></script>
+<script src="lib/semantic.min.js"></script>
+<script src="lib/jspanel.min.js"></script>
+
+<script src="js/contracts.js"></script>
+<script src="js/util.js"></script>
+<script src="js/farm.js"></script>
+<script src="js/broadcast.js"></script>
+<source src="/sound/register.mp3" type="audio/mpeg">
+<div id="sound"></div>
+<script>
+  $(function () {
+    $("#chat").draggable({
+      iframeFix: true
+    });
+  });
+</script>
+<script>
+  setTimeout(function () {
+    getCropInfo(true)
+    setPrice()
+  }, 500)
+  setInterval(function () {
+    getCropInfo(false)
+    getBroadcast()
+  }, 2000);
+
+</script>
+
+</html>

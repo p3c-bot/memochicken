@@ -1,124 +1,355 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:creator" content="@_unwriter" />
-  <meta name="twitter:title" content="Memochicken" />
-  <meta name="twitter:description" content="Post a memo, feed the chicken." />
-  <meta name="twitter:image" content="https://unwriter.github.io/memochicken/screenshot.png" />
-  <meta property="og:url" content="https://unwriter.github.io/memochicken" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Memochicken" />
-  <meta property="og:description" content="Watch your favorite streamers. Invest in them!" />
-  <meta property="og:image" content="https://unwriter.github.io/memochicken/screenshot.png" />
-  <script src="https://api.moneybutton.com/moneybutton.js"></script>
-  <script src='https://unpkg.com/datacash'></script>
-  <script src='https://unpkg.com/databutton'></script> -->
-  <title>P3C.tv</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
-    integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/semantic.min.css">
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/alertify.min.css" />
-  <!-- Default theme -->
-  <link rel="stylesheet" href="css/themes/default.min.css" />
-  <!-- Semantic UI theme -->
-  <link rel="stylesheet" href="css/themes/semantic.min.css" />
-  <!-- Bootstrap theme -->
-  <link rel="stylesheet" href="css/themes/bootstrap.min.css" />
-  <link rel="stylesheet" href="css/jspanel.min.css">
+    <title>P3C.tv</title>
+    <meta charset="utf8">
+    <meta name="description" content="An implementation of P2P employment insurance on Ethereum Classic. Provides a steady source of income for entrepeneuers and nomads. Use algorithms and sound money to plan for the future and gain peace of mind.">
+    <meta name="keywords" content="ETC Dapps,Ethereum Classic, ETC, Universal Basic Income Dapp, UBI Dapp, UBI Ethereum, Universal Basic income Ethereum, Crypto Social Security, Continuous Organization, Continous Organizations, Defi, Decentralized Finance, DAO, Decentralized Autonomous Organization, Blockchain insurance">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="google-site-verification" content="WrgQBpU2wJGTSp9LZ9NFYn6p_NxgSB95ocpo39Dcydg" />
+    <link rel="stylesheet" href="css/semantic.min.css">
+    <!-- Default theme -->
+    <link rel="stylesheet" href="css/themes/default.min.css" />
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="css/themes/semantic.min.css" />
+    <link rel="stylesheet" href="css/main.css">
+    <!-- <link rel="stylesheet" href="css/custom.css"> -->
+    <link rel="icon" type="image" href="img/phoenix.png">
+    <!-- GA -->
+    <meta name="google-site-verification" content="DNUdvoQF9H6RE-YDglRHbC5UVL9AjAb9X8-YbMLriYc" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133170751-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/custom.css">
-  <link rel="icon" type="image/png" href="img/phoenix.png">
-
-  <!-- GA -->
-  <meta name="google-site-verification" content="DNUdvoQF9H6RE-YDglRHbC5UVL9AjAb9X8-YbMLriYc" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133170751-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'UA-133170751-1');
-  </script>
-  <!-- END GA -->
+        function gtag() {
+        dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-133170751-1');
+    </script>
+    <!-- END GA -->
 </head>
 
 <body>
-  <div id="chat" class='feed'>
-    <div class="container">
-      <div class="col">
-        <a href="#" id='handle'><i class='fas fa-angle-double-up'></i> Hide</a>
-        <div class='content'>
-          <div class="row">
-            <h2>
-              <i class='fas fa-kiwi-bird'></i> P3C.tv
-            </h2>
-          </div>
-          <div class="row">
-
-            <div>Invest in your favorite streamers. Download <a target="_blank"
-                href="https://chrome.google.com/webstore/detail/saturn-wallet/nkddgncdjgjfcddamfgcmfnlhccnimig?hl=en">Saturn</a>.
+    <div class="ui large inverted stackable menu gradient personal" style="border-radius:0px !important; margin-bottom: 0px;">
+        <div class="ui container">
+            <a class="header item" href="/view.html">
+                <img src="img/whale.svg" class="ui mini image" />
+                <h2 class="title">P3C.tv</h2>
+            </a>
+            <div class="custom-computer only right menu">
+                <div class="item">
+                    <a target="_blank" href="/use.html">
+                        <div class="opacity">
+                            <strong>
+                                Watch
+                            </strong>
+                        </div>
+                    </a>
+                    <a target="_blank" href="http://p3c.io/use.html">
+                        <div class="opacity">
+                            <strong>
+                                Wallet
+                            </strong>
+                        </div>
+                    </a>
+                    <a target="_blank" href="http://p3c.io/use.html">
+                        <div class="opacity">
+                            <strong>
+                                Tutorial
+                            </strong>
+                        </div>
+                    </a>
+                </div>
             </div>
-          </div>
-          <div class="row">
-            <div class='well'>Your P3C: <span id="myCropTokens" class="count"></span><span id="myCropValue"
-                class="count"></span></div>
-          </div>
-          <div class="row">
-            <div class='well'>Your Dividends: <span id="myCropDividends" class="count"></span><span
-                id="myDividendsValue" class="count"></span></div>
-          </div>
-          <div class="row">
-            <div class='well'>Broadcast: <span id="broadcast" class="count"></span></div>
-          </div>
-
-          <div id="message" class='form'>
-            <input class="sponsor-msg" id='msg' placeholder='P3C: 90% to streamer, 10% back. '></input>
-            <a href='#' id='done' class='btn'><i class='fas fa-kiwi-bird'></i> $0.05</a>
-          </div>
-          <iframe allowfullscreen="" frameborder="0" height="65%" id="youtubeComments" src=""
-            width="100%"></iframe><br />
         </div>
-      </div>
     </div>
-  </div>
+    <div class="pusher">
+        <div class="ui masthead vertical center aligned segment">
+            <div class="ui text container jumbotron">
+                <img width="250" height="250" class="logo custom-computer only" loop="" src="/img/diamond.gif" alt="Diamond">
+                <img width="50%" height="50%" class="logo mobile only" src="/img/diamond.gif" alt="Diamond">
 
+                <h1 style="margin-top: 0px">P3C.tv: Be your own producer</h1>
+                <!-- <i><h3 style="margin-top: 0px"><i>Connecting both users and streamers.</i></h3> -->
+                <a href="/use.html" class="dashboard-link ui huge green primary button participate">Watch Now!
+                    <i class="right arrow icon"></i>
+                </a>
+                <a href="https://blockscout.com/etc/mainnet/address/0xde6fb6a5adbe6415cdaf143f8d90eb01883e42ac/contracts"
+                    class="ui huge default button">View Vault</a>
+            </div>
+        </div>
+        <br>
+        <div class="ui container vertical stripe">
+            <h2 class="ui header center aligned"></h2>
+            <h2 class="feature-title">Current System Status</h2>
+            <div id="statsContainer" class="ui equal width stackable grid">
+                <div class="center aligned row">
+                    <div class="column" style="padding-bottom: 0px !important;">
+                        <div id="sizeStats" class="ui segments">
+                            <div class="ui segment">
+                                <h4 class="stats"><i class="ethereum line circle icon stats"></i>Vault: <span id="sizeETC"></span>                         (<span id="sizeUSD"></span>)</h4>
+       
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column" style="padding-bottom: 0px !important;">
+                        <div id="priceStats" class="ui segments">
+                            <div class="ui segment">
+                                <h4 class="stats"><i class="chart line circle icon stats"></i>P3C Price: <span id="priceETC"></span>
+                                    (<span id="priceUSD"></span>)</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column" style="padding-bottom: 0px !important;">
+                        <div id="createdStats" class="ui segments">
+                            <div class="ui segment">
+                                <h4 class="stats"><i class="globe line circle icon stats"></i>P3C Created: <span id="tokenSupply"></span>
+                                    of 204,939,006</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui vertical stripe features">
+                <div class="ui equal width stackable grid">
+                    <div class="center aligned row">
+                        <div class="column">
+                            <div class="icon-main">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <h2 class="feature-title">Monetize.</h2>
+                            <hr class="line">
+                            <p>Every time an on-stream ad is placed, the users and the streamer get paid P3C. When this happens the entire community splits 10% of the amount as a passive dividend, delivered instantly to each wallet.</p>
+                            <img width="200" height="200" class="logo" src="/img/hourglass.gif" alt="Phoenix">
+                        </div>
+                        <div class="column">
+                            <div class="icon-main">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h2 class="feature-title">Converse.</h2>
+                            <hr class="line">
+                            <p>When users place the 140-character message on the stream, the streamer and the rest of the community can choose to engage with it. The message hovers above all of the text until someone else buys it!
+                        </div>
+                        <div class="column">
+                            <div class="icon-main">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <h2 class="feature-title">Decentralize.</h2>
+                            <hr class="line">
+                            <p> P3C is an open-source system that runs on the Ethereum Classic (ETC)
+                                blockchain. The contract has been audited and <b>cannot be changed, removed, or
+                                    tampered with</b>. P3C stands for transparency.</p>
+                            <img width="200" height="140" class="logo" style="margin-top: 18px;" src="/img/callisto-badge.png"
+                                alt="Phoenix">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:center;">
+            <a href="https://discord.gg/crjsdJr" target="_blank" class="ui left labeled icon large green button" style="margin-top: 15px; margin-bottom: 15px;">
+                <i class="left discord icon"></i>
+                Join Community Chat
+            </a>
+        </div>
+        <div class="ui masthead vertical center aligned segment">
+        </div>
+        <br>
+        <div class="ui container vertical stripe">
+            <h1 class="ui header center aligned">How to Participate</h1>
+            <div class="ui vertical stripe features">
+                <div class="ui equal width stackable grid">
+                    <div class="center aligned row">
+                        <div class="column">
+                            <div class="icon-main">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <h3>1. Get
+                                <a target="_blank" href="https://saturn.network/saturn-wallet" title="">Saturn</a>
+                                (Browser Extension)
+                            </h3>
+                            <hr class="line">
+                            <p>Make sure you keep your seedwords safe! Saturn wallet and Metamask cannot run at the
+                                same time.
+                                See here for
+                                <a target="_blank" href="https://p3c.hostedwiki.co/pages/P3C%20-%20Explained#how-to-start-playing">help</a>
+                            </p>
+                            <img class="logo" src="/img/landing/disable.png" alt="Disable">
+                        </div>
+                        <div class="column">
+                            <div class="icon-main">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>2. Acquire Ethereum Classic (<span class="notranslate">ETC</span>)</h3>
+                            <hr class="line">
+                            <p> Once you have your Ethereum Classic Wallet installed, you need Ethereum Classic (<span
+                                    class="notranslate">ETC</span>).
+                                Reload
+                                this page. We recommend exchanging your coins on Changelly, or using an exchange like
+                                Binance.</p>
+                            <img class="logo" style="margin-bottom: 20px;" src="doc-assets/wallet.png" alt="Address">
+                        </div>
+                        <div class="column">
+                            <div class="icon-main">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <h3>3. Navigate to the
+                                <a class="dashboard-link" target="_blank" href="/use.html" title="">Dashboard</a>
+                            </h3>
+                            <hr class="line">
+                            <p>You can manage your holdings and purchase P3C via
+                                <a class="dashboard-link" target="_blank" href="/use.html">the dashboard.</a>
+                            </p>
+                            <img width="350" height="350" class="logo" src="/img/landing/new-buy.png" alt="Buy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="clock" class="ui container custom-computer only">
+            <link rel="stylesheet" href="css/flipclock.css">
+            <br>
+            <h1 class="ui header center aligned">How long has P3C been running?</h1>
+            <br>
+            <div class="ui header center aligned flip-clock"></div>
+        </div>
+
+        <div class="faq">
+            <div class="ui container faq">
+                <h1 class="ui header inverted center aligned">Frequently Asked Questions</h1>
+                <div class="ui segment">
+                        <h4>Q: What is P3C.tv? </h4>
+                        <p class="instruction">
+                                P3C is a stream aggregator. We take livestreams from Youtube and around the world, and have a system that allows you to engage with the streamers and community. We are different because we use P3C, which is a digital asset governed by an immutable smart contract to handle payments, rather than a company like Google. P3C pays you to hold it. You can learn more about P3C by going to the website, but it is an economic platform that has many potential use cases and P3C.tv is just one.
+                        </p>
+                    </div>
+                <div class="ui segment">
+                    <h4>Q: What are the core rules of P3C? </h4>
+                    <p class="instruction">
+                        <b>1.</b> You buy into the system by purchasing P3C with Ethereum classic (ETC), every token purchased increases the P3C
+                        price
+                        by +0.00000001 <span class="notranslate">ETC</span>.
+                        <br>
+                        <b>2.</b> 10% of what you spend to buy the P3C gets distributed proportionally to all other P3C
+                        holders as <b>prosperity</b>.
+                        <br>
+                        <b>3.</b> When you sell your P3C, you get back <span class="notranslate">ETC</span> at the
+                        current price, and the global price
+                        per
+                        P3C goes down by -0.00000001 <span class="notranslate">ETC</span>.
+                        <br>
+                        <b>4.</b> 10% of what you would get back for the sale is distributed to all other P3C holders
+                        proportionally as <b>prosperity</b>.
+                        <br>
+                        <i>Remember, the contract holds enough <span class="notranslate">ETC</span> to pay everyone,
+                            but the price you'll get is always changing. The algorithm is set in stone and cannot be
+                            changed.</i>
+                        <img class="center-image" style="width: 75%" src="doc-assets/co.png" alt="Growth">
+                    </p>
+                </div>
+                <div class="ui segment">
+                    <h3>Current System Liquidity</h3>
+                    <a id="liquidity"></a>
+                    <iframe src="https://www.desmos.com/calculator/tzlxpyl6yd?embed" width="100%" height="400px" style="border: 1px solid #ccc"
+                        frameborder=0></iframe>
+                </div>
+                <div class="ui segment">
+                    <h4>Q: What is Ethereum Classic, and why is P3C on it?</h4>
+                    <p class="instruction"><b>A: </b> Ethereum Classic is a system that allows you to run contracts,
+                        like P3C,
+                        <a href="https://www.youtube.com/watch?v=l9dpjN3Mwps&" target="_blank">in a trustless way.</a>
+                        This means that the contract and any funds inside of it is protected by computers all
+                        throughout the world. Ethereum Classic system also stands for the idea that <b>code is law</b>,
+                        which means that however the program runs, even if the results are unexpected, is valid. To use
+                        Ethereum Classic, you need <span class="notranslate">ETC</span> which is the native currency.
+                        There can only be 210 million <span class="notranslate">ETC</span>. You can purchase <span
+                            class="notranslate">ETC</span> on exchanges like <a href="https://www.coinbase.com/" target="_blank">Coinbase</a>
+                        or <a href="https://www.binance.com/en/trade/ETC_BTC" target="_blank">Binance</a>.
+                        <img src="img/etc-logo.png" class=" etc-small" />
+                </div>
+                <div class="ui segment">
+                    <h4>Q: Can I access P3C from a mobile phone?</h4>
+                    <p class="instruction"><b>A: </b> Yes. You can install
+                        <a href="https://trustwalletapp.com/" title="">Trust Wallet</a>
+                        <a href="https://itunes.apple.com/us/app/trust-ethereum-wallet/id1288339409" title="">on iOS</a>
+                        or
+                        <a href="https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp" title="">on
+                            Android</a> and
+                        <strong>enter your same seed words</strong> from Saturn to have full access to your Saturn
+                        account! We are
+                        listed as official token in the Trust wallet marketplace, with full compatability. You can
+                        send,
+                        receive, and buy P3C with ease. </p>
+                    <p></p>
+                </div>
+                <div class="ui segment">
+                    <h4>Q: Can I develop an application on top of P3C?</h4>
+                    <p class="instruction"><b>A: </b> Yes, in fact we encourage it. There is no need to ask permission,
+                        as this is a decentralized project. You can go to the <a href="https://github.com/p3c-bot/p3c-bot.github.io">source
+                            code</a> and simply follow the README to build your own version in minutes. With your own
+                        version, you collect a contract bonus of all transactions going through the website. We also
+                        have API-docs <a href="https://github.com/p3c-bot/api/blob/master/README.md">here.</a></p>
+                </div>
+                <div class="ui segment">
+                    <h4>Q: What is "Reinvesting Prosperity"?</h4>
+                    <p class="instruction"><b>A: </b> Reinvesting means that you are choosing to take all your
+                        prosperity, and exchange it for additional P3C tokens. During this, the 10% community fee is
+                        incurred as with
+                        all transactions. Reinvesting your prosperity increases your P3C holdings, increasing your
+                        share of future prosperity.
+                        By default you have auto-compound turned on, and can turn it off at any time.</p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="ui inverted vertical footer segment gradient personal">
+            <div class="ui container">
+                <div class="ui stackable inverted divided equal height stackable grid">
+                    <div class="three wide column">
+                        <div class="ui inverted link list">
+                            <a class="item" href="http://p3c.io/">Home</a>
+                            <a class="dashboard-link item" href="/use.html">Dashboard</a>
+                            <a class="item" href="https://34r7h.github.io/p3c/docs/faq/#what-is-p3c">Wiki</a>
+                            <a href="https://github.com/p3c-bot/p3c-bot.github.io" target="_blank" class="item"><i
+                                    class="github icon"></i>Github</a>
+                        </div>
+                    </div>
+                    <div class="three wide column">
+                        <h5 class="ui inverted header" style="margin-bottom:10px;">Community</h5>
+                        <div class="ui inverted link list" style="margin-top:0px;">
+                            <a href="https://discord.gg/crjsdJr" target="_blank" class="item">Chat Room</a>
+                            <a href="https://medium.com/@masterhax/" target="_blank" class="item">Blog</a>
+                            <a href="https://github.com/p3c-bot/api/blob/master/README.md" target="_blank" class="item">API
+                                Docs</a>
+                        </div>
+                    </div>
+                    <div class="ten wide column">
+                        <h5 class="ui inverted header">Disclaimer</h5>
+                        <p class="instruction disclaimer">
+                            This project is experimental. Do not send any <span class="notranslate">ETC</span> you
+                            cannot
+                            afford to
+                            lose. There is zero guarantee
+                            that you will make <span class="notranslate">ETC</span>. This is very new technology and we
+                            kindly ask
+                            anyone who doesn't grasp the risks inherent to Blockchain technology to not participate in
+                            P3C. The
+                            contract is running <a style="color: orange;" target="_blank" href="https://blockscout.com/etc/mainnet/address/0xde6fb6a5adbe6415cdaf143f8d90eb01883e42ac/contracts">here</a>
+                            and cannot be changed. Don't trust, verify.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/semantic.min.js"></script>
+    <script src="lib/flipclock.min.js"></script>
+
+    <script src="js/util.js"></script>
+    <script src="js/home.js"></script>
 </body>
-<script src="lib/jquery.min.js"></script>
-<script src="lib/web3.min.js"></script>
-<script src="lib/alertify.min.js"></script>
-<script src="lib/semantic.min.js"></script>
-<script src="lib/jspanel.min.js"></script>
-
-<script src="js/contracts.js"></script>
-<script src="js/util.js"></script>
-<script src="js/farm.js"></script>
-<script src="js/broadcast.js"></script>
-<source src="/sound/register.mp3" type="audio/mpeg">
-<div id="sound"></div>
-<script>
-  $(function () {
-    $("#chat").draggable({
-      iframeFix: true
-    });
-  });
-</script>
-<script>
-  setTimeout(function () {
-    getCropInfo(true)
-    setPrice()
-  }, 500)
-  setInterval(function () {
-    getCropInfo(false)
-    getBroadcast()
-  }, 2000);
-
-</script>
 
 </html>
