@@ -11,7 +11,7 @@ function playSound(filename) {
 function getNetworkId(web3) {
     return new Promise((resolve, reject) => {
         // trust wallet doesnt allow accessing this variable.
-        if (web3.currentProvider.publicConfigStore == undefined){
+        if (web3.currentProvider.publicConfigStore == undefined) {
             resolve('61')
         }
         version = web3.currentProvider.publicConfigStore._state.networkVersion.toString();
@@ -19,7 +19,7 @@ function getNetworkId(web3) {
     });
 }
 
-function displayError(errorString){
+function displayError(errorString) {
     alertify.defaults.notifier.delay = 10000
     alertify.error(errorString)
     $('#warning').transition({
@@ -36,56 +36,66 @@ function displayError(errorString){
 
 var convert = function (amount) {
     return new Promise(function (resolve, reject) {
-      fetch("https://min-api.cryptocompare.com/data/price?fsym=ETC&tsyms=USD")
-        .then(function (res) {
-          return res.json()
-        })
-        .then(function (currency) {
-          // ETC Price in cents
-          let rate = Number(currency.USD) * 100
-          let converted = (amount / rate)
-          resolve(converted)
-        })
+        fetch("https://min-api.cryptocompare.com/data/price?fsym=ETC&tsyms=USD")
+            .then(function (res) {
+                return res.json()
+            })
+            .then(function (currency) {
+                // ETC Price in cents
+                let rate = Number(currency.USD) * 100
+                let converted = (amount / rate)
+                resolve(converted)
+            })
     })
-  }
+}
 
 
-$.fn.draggable = function(){
+$.fn.draggable = function () {
     var $this = this,
-    ns = 'draggable_'+(Math.random()+'').replace('.',''),
-    mm = 'mousemove.'+ns,
-    mu = 'mouseup.'+ns,
-    $w = $(window),
-    isFixed = ($this.css('position') === 'fixed'),
-    adjX = 0, adjY = 0;
-  
-    $this.mousedown(function(ev){
+        ns = 'draggable_' + (Math.random() + '').replace('.', ''),
+        mm = 'mousemove.' + ns,
+        mu = 'mouseup.' + ns,
+        $w = $(window),
+        isFixed = ($this.css('position') === 'fixed'),
+        adjX = 0,
+        adjY = 0;
+
+    $this.mousedown(function (ev) {
         var pos = $this.offset();
         if (isFixed) {
-            adjX = $w.scrollLeft(); adjY = $w.scrollTop();
+            adjX = $w.scrollLeft();
+            adjY = $w.scrollTop();
         }
-        var ox = (ev.pageX - pos.left), oy = (ev.pageY - pos.top);
-        $this.data(ns,{ x : ox, y: oy });
-        $w.on(mm, function(ev){
+        var ox = (ev.pageX - pos.left),
+            oy = (ev.pageY - pos.top);
+        $this.data(ns, {
+            x: ox,
+            y: oy
+        });
+        $w.on(mm, function (ev) {
             ev.preventDefault();
             ev.stopPropagation();
             if (isFixed) {
-                adjX = $w.scrollLeft(); adjY = $w.scrollTop();
+                adjX = $w.scrollLeft();
+                adjY = $w.scrollTop();
             }
             var offset = $this.data(ns);
-            $this.css({left: ev.pageX - adjX - offset.x, top: ev.pageY - adjY - offset.y});
+            $this.css({
+                left: ev.pageX - adjX - offset.x,
+                top: ev.pageY - adjY - offset.y
+            });
         });
-        $w.on(mu, function(){
+        $w.on(mu, function () {
             $w.off(mm + ' ' + mu).removeData(ns);
         });
     });
-  
-    return this;
-  };
 
-  function getUrlVars() {
+    return this;
+};
+
+function getUrlVars() {
     var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
         vars[key] = value;
     });
     return vars;
