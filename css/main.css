@@ -347,6 +347,7 @@ i.blue.icon {
 }
 
 .faq {
+    color: black;
     max-width: 49rem;
     padding: 2rem;
     margin: auto;
