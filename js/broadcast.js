@@ -83,7 +83,7 @@ function getBroadcast() {
       change = (String(currentBroadcast) !== String(result))
       if (change) {
         currentBroadcast = String(result)
-        $("#broadcast").replaceWith("<b id='broadcast'>" + currentBroadcast + "</b>")
+        $("#broadcast").replaceWith("<b id='broadcast' class='count blink_me'>" + currentBroadcast + "</b>")
         $('#broadcast').transition({
           animation: 'flash',
           duration: '1s',
