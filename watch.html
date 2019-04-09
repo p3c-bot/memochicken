@@ -59,7 +59,7 @@
         <div class='content'>
           <div class="row">
             <h2>
-              <i class='fas fa-kiwi-bird'></i> P3C.tv
+                <img src="/img/air.png" width="25%" alt=""> P3C.tv
             </h2>
           </div>
           <div class="row">
@@ -77,12 +77,12 @@
                 id="myDividendsValue" class="count"></span></div>
           </div>
           <div class="row">
-            <div class='well'>Broadcast: <span id="broadcast" class="count"></span></div>
+            <div class='well'>Broadcast: <span id="broadcast" class="count" class="broadcast"></span></div>
           </div>
 
           <div id="message" class='form'>
             <input class="sponsor-msg" id='msg' placeholder='<Your Message Here>'></input>
-            <a href='#' id='done' class='btn'><i class='fas fa-kiwi-bird'></i> $0.05</a>
+            <a href='#' id='done' class='btn'>$0.05</a>
           </div>
           <iframe allowfullscreen="" frameborder="0" height="65%" id="youtubeComments" src=""
             width="100%"></iframe><br />
@@ -120,6 +120,9 @@
     getCropInfo(false)
     getBroadcast()
   }, 2000);
+  // setInterval(function () {
+  //   $('#broadcast').transition('tada')
+  // })
 
 </script>
 

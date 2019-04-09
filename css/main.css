@@ -1,11 +1,42 @@
-body {
-    color: rgba(0, 0, 0, .7) !important;
+.white {
+    color: white;
 }
 
-.clock {
-    display: inline-block;
-    width: auto;
-    margin: 1em;
+
+.bg-image {
+    position: fixed;
+    left: 0;
+    right: 0;
+    /* z-index: 1; */
+
+    /* The image used */
+    background-image: url("/img/miami.jpg");
+
+    /* Add the blur effect */
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    /* background-repeat: no-repeat; */
+    background-size: cover;
+}
+
+.content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+.navbar {
+    margin-top: 0px !important;
 }
 
 .ui.header {
@@ -91,6 +122,7 @@ body {
     background: linear-gradient(to left, #56B4D3, #348F50) !important;
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
 .center-image {
     display: block;
     margin-left: auto;
@@ -168,7 +200,7 @@ body {
 
 .ui.email.button:hover {
     background-color: #347771 !important;
-  }
+}
 
 
 .participate {
@@ -178,7 +210,7 @@ body {
 
 .ui.green.button:hover {
     background-color: #235f35 !important;
-  }
+}
 
 .ui.basic.green.button {
     background-color: transparent;
@@ -188,7 +220,7 @@ body {
 
 .ui.orange.button:hover {
     background-color: #994712 !important;
-  }
+}
 
 
 i.green.icon {
@@ -315,9 +347,10 @@ i.blue.icon {
 }
 
 .faq {
+    max-width: 49rem;
+    padding: 2rem;
+    margin: auto;
     font-size: 20px;
-    font-family: "Times New Roman", Times, serif;
-    text-align: left;
 }
 
 .disclaimer {
@@ -343,7 +376,7 @@ i.blue.icon {
 }
 
 .green {
-    color : green;
+    color: green;
 }
 
 .red {

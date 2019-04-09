@@ -6,7 +6,11 @@ body {
 }
 
 .feed {
-    background: rgba(0, 0, 0, 0) !important
+    /* background: rgba(0, 0, 0, 0) !important */
+}
+
+.broadcast {
+    color: red;
 }
 
 .sponsor-msg {
@@ -74,12 +78,12 @@ height: 150px; */
     right: 0;
     top: 100px;
     bottom: 100px;
-    font-size: 12px;
+    font-size: 14px;
     text-align: left;
-    /* width: 250px; */
-    background: rgba(0, 0, 0, 0);
-    color: white;
+    /* width: 400px; */
+    background: rgba(0, 0, 0, .15);
     padding: 10px;
+    font: bold; 
 }
 
 .feed.collapsed {
@@ -105,7 +109,7 @@ h2 {
 
 div {
     display: block;
-    color: white;
+    color: #9400D3;
 }
 
 a {
@@ -115,7 +119,7 @@ a {
 .well {
     margin: 10px 0;
     padding: 4px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.3);
 }
 
 #handle {
