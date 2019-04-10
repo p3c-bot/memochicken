@@ -1,6 +1,8 @@
-var farmContract = web3.eth.contract(contracts.farm.abi).at(contracts.farm.address);
-var p3cContract = web3.eth.contract(contracts.p3c.abi).at(contracts.p3c.address);
-var cropAbi = web3.eth.contract(contracts.crop.abi)
+if ("web3" in window){
+    var farmContract = web3.eth.contract(contracts.farm.abi).at(contracts.farm.address);
+    var p3cContract = web3.eth.contract(contracts.p3c.abi).at(contracts.p3c.address);
+    var cropAbi = web3.eth.contract(contracts.crop.abi)
+}
 
 var myCropAddress;
 var myCropTokens;

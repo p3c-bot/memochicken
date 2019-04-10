@@ -1,4 +1,6 @@
-var broadcaster = web3.eth.contract(contracts.broadcaster.abi).at(contracts.broadcaster.address);
+if ("web3" in window){
+  var broadcaster = web3.eth.contract(contracts.broadcaster.abi).at(contracts.broadcaster.address);
+}
 
 
 var videoID = getUrlVars()["videoID"];
@@ -45,32 +47,30 @@ $.getJSON('https://api.p3c.io/test/', function (json) {
     e.preventDefault()
   })
 
-  // document.querySelector("#done").addEventListener("click", function (e) {
-  //   let message = document.querySelector("#msg").value
-  //   convert(params.tipAmount)
-  //     .then(function (amount) {
-  //       console.log(myCropAddress)
-  //       broadcaster.purchaseBroadcast.sendTransaction(
-  //         message,
-  //         // streamer crop, this is set in stone
-  //         params.streamerAddress,
-  //         myCropAddress, {
-  //           from: web3.eth.accounts[0],
-  //           value: web3.toWei(amount),
-  //           gasPrice: web3.toWei('0.000000003')
-  //         },
-  //         function (error, result) { //get callback from function which is your transaction key
-  //           if (!error) {
-  //             console.log(result);
-  //             playSound('register');
-  //           } else {
-  //             console.log(error);
-  //           }
-  //         })
-  //     })
-  // })
-
-
+  document.querySelector("#done").addEventListener("click", function (e) {
+    let message = document.querySelector("#msg").value
+    convert(params.tipAmount)
+      .then(function (amount) {
+        console.log(myCropAddress)
+        broadcaster.purchaseBroadcast.sendTransaction(
+          message,
+          // streamer crop, this is set in stone
+          params.streamerAddress,
+          myCropAddress, {
+            from: web3.eth.accounts[0],
+            value: web3.toWei(amount),
+            gasPrice: web3.toWei('0.000000003')
+          },
+          function (error, result) { //get callback from function which is your transaction key
+            if (!error) {
+              console.log(result);
+              playSound('register');
+            } else {
+              console.log(error);
+            }
+          })
+      })
+  })
 });
 
 
