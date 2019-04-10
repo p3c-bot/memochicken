@@ -36,6 +36,10 @@
   <link rel="stylesheet" href="css/custom.css">
   <link rel="icon" type="image/png" href="img/phoenix.png">
 
+
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="830654661400-c44js0fohjrp0v39cj2nqvffpjmbi5u8.apps.googleusercontent.com">
+
   <!-- GA -->
   <meta name="google-site-verification" content="DNUdvoQF9H6RE-YDglRHbC5UVL9AjAb9X8-YbMLriYc" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133170751-6"></script>
@@ -77,13 +81,28 @@
                 id="myDividendsValue" class="count"></span></div>
           </div>
           <div class="row">
-            <div class='well'>Broadcast: <span id="broadcast" class="count blink_me"></span></div>
+            <div class='well'>Special Message: <span id="broadcast" class="count blink_me"></span></div>
           </div>
 
           <div id="message" class='form'>
             <input class="sponsor-msg" id='msg' placeholder='<Your Message Here>'></input>
             <a href='#' id='done' class='btn'>$0.05</a>
           </div>
+
+          <form action="https://api.p3c.io/airdrop/stripe" method="POST">
+              <script
+                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="pk_test_3Iu2J6v6pW7DbIZZkOEMx04h"
+                data-amount="100"
+                data-name="P3C.tv"
+                data-description="Get P3C to tip streamers with."
+                data-image="/img/phoenix.png"
+                data-locale="auto"
+                data-zip-code="true">
+              </script>
+            </form>
+            <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+
           <iframe allowfullscreen="" frameborder="0" height="65%" id="youtubeComments" src=""
             width="100%"></iframe><br />
         </div>
