@@ -123,11 +123,11 @@
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.center-image {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+.center-clock {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 62%;
 }
 
 .buy-amount {

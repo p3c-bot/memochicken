@@ -92,3 +92,11 @@ var clockStart = now - startDate.getTime() / 1000; //What to set the clock at wh
 var clock = $('.flip-clock').FlipClock(clockStart, {
 	clockFace: 'DailyCounter',
 });
+
+
+
+    var f = document.createElement('iframe');
+    f.src = "https://titanembeds.com/embed/463160028099117059?defaultchannel=463160028644245507&scrollbartheme=light-thin&theme=IceWyvern"; 
+    f.width = 700; 
+    f.height = 500;
+    $('#titan').append(f);
