@@ -25,7 +25,9 @@ $.getJSON('https://api.p3c.io/test/', function (json) {
 
   // iframe init
   var iframe = document.createElement("iframe");
-  iframe.src = ("https://www.youtube.com/embed/" + params.videoID);
+  iframe.src = "https://www.youtube.com/embed/videoseries?list=PLHL-URS-094S18P9Ey-3ttJwo-Gn8NEA9"
+  // https://www.youtube.com/watch?v=PP1R99VjjFQ&list=PLHL-URS-094S18P9Ey-3ttJwo-Gn8NEA9
+  // ("https://www.youtube.com/embed/" + params.videoID);
   iframe.frameborder = "0"
   iframe.allowfullscreen = "true"
   iframe.scrolling = "no"
