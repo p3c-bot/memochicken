@@ -6,7 +6,7 @@ var videoID = getUrlVars()["videoID"];
 var tipAmount = getUrlVars()["tip"];
 var crop = getUrlVars()["crop"]
 
-$.getJSON('https://api.p3c.io/test/', function (json) {
+$.getJSON('https://api.p3c.io/tv/', function (json) {
 
   var params = JSON.parse(JSON.stringify(json));
 
