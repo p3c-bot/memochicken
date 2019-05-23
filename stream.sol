@@ -11,16 +11,16 @@ contract Stream {
   
   string public message = "test";
   
-  function tip(string request, address recipientCrop, address myCrop) public payable returns (uint256) {
-
+  function tip(string request, address streamerCrop, address myCrop) public payable returns (uint256) {
       require(bytes(request).length <= 140);
       
       
-    //   uint256 halfTokens = uint256(SafeMath.div(SafeMath.mul(newTokens, 50), 100));
-    //   Hourglass(p3cAddress).transfer(myCrop, halfTokens - 1);
-
+      uint256 half = uint256(SafeMath.div(SafeMath.mul(msg.value, 50), 100));
+      
+      Crop(myCrop).buy.value(half - 1)(streamerCrop);
+      Crop(streamerCrop).buy.value(half)(streamerCrop);
+      
       message = request;
-      Crop(recipientCrop).buy.value(msg.value)(recipientCrop);
   }
 }
 
