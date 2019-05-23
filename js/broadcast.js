@@ -34,6 +34,9 @@ $.getJSON('https://api.p3c.io/tv/', function (json) {
 
   $('#youtubeComments').attr('src', chatID);
 
+  (params.tipAmount)
+  document.querySelector("#done").innerHTML = "<i class='fas fa-angle-double-up'></i>" + "$" + params.tipAmount / 100 + "</a>"
+
   // Feed Hide/Show UI
   document.querySelector("#handle").addEventListener("click", function (e) {
     var feed = document.querySelector(".feed")
@@ -81,6 +84,7 @@ function getBroadcast() {
       change = (String(currentBroadcast) !== String(result))
       if (change) {
         currentBroadcast = String(result)
+        alert(currentBroadcast)
         $("#broadcast").replaceWith("<b id='broadcast' class='count blink_me'>" + currentBroadcast + "</b>")
         $('#broadcast').transition({
           animation: 'flash',

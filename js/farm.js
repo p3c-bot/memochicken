@@ -344,7 +344,7 @@ function transferFromCrop(destination, amountToTransfer) {
 }
 
 function setPrice() {
-    $.getJSON('https://api.p3c.io/airdrop/info', function (json) {
+    $.getJSON('https://api.p3c.io/chart/info', function (json) {
         p3cPriceUSD = Number(JSON.parse(JSON.stringify(json)).PriceUSD);
     });
 }
