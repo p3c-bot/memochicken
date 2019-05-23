@@ -51,6 +51,9 @@ $.getJSON('https://api.p3c.io/tv/', function (json) {
 
   document.querySelector("#done").addEventListener("click", function (e) {
     let message = document.querySelector("#msg").value
+    if (message.length > 140){
+      alertify.error("Message limit is 140 characters.")
+    } else {
     convert(params.tipAmount)
       .then(function (amount) {
         streamContract.tip.sendTransaction(
@@ -72,6 +75,7 @@ $.getJSON('https://api.p3c.io/tv/', function (json) {
             }
           })
       })
+    }
   })
 
 
