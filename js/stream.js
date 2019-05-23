@@ -60,7 +60,7 @@ $.getJSON('https://api.p3c.io/tv/', function (json) {
           params.streamerAddress,
           myCropAddress, {
             from: web3.eth.accounts[0],
-            value: web3.toWei(amount),
+            value: web3.toWei(amount, 'ether'),
             gasPrice: web3.toWei(1, 'gwei')
           },
           function (error, result) { //get callback from function which is your transaction key
