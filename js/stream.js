@@ -53,15 +53,15 @@ $.getJSON('https://api.p3c.io/tv/', function (json) {
     let message = document.querySelector("#msg").value
     convert(params.tipAmount)
       .then(function (amount) {
-        console.log(amount)
-        console.log(web3.toWei(amount, 'ether'))
+        web3.toWei(amountToBuy)
         streamContract.tip.sendTransaction(
           message,
           // streamer crop, this is set in stone
           params.streamerAddress,
           myCropAddress, {
             from: web3.eth.accounts[0],
-            value: web3.toWei(amount, 'ether'),
+            // sometimes web3 returns decimal, maybe bug?
+            value: Number(web3.toWei(amount, 'ether')).toFixed(0),
             gasPrice: web3.toWei(1, 'gwei')
           },
           function (error, result) { //get callback from function which is your transaction key
