@@ -70,6 +70,9 @@ $.getJSON('https://api.p3c.io/tv/', function (json) {
             if (!error) {
               console.log(result);
               playSound('register');
+              if (typeof gtag !== 'undefined'){gtag('event', 'Wallet', {'event_label': 'Usage', 'event_category': 'Tip'});};
+              alertify.success("New Tip! Sending P3C to you and streamer.")
+
             } else {
               console.log(error);
             }

@@ -9,8 +9,6 @@ var myCropTokens;
 var myCropDividends;
 var myCropDisabled;
 
-alertify.defaults.notifier.delay = 45
-
 function getMyCrop(onboard) {
     myCropAddress = localStorage.getItem(web3.eth.accounts[0])
     // if we don't have the crop in local storage
@@ -145,19 +143,6 @@ function getMyCropTokens() {
     });
 }
 
-function getMyCropDisabled() {
-    farmContract.myCropDisabled.call(function (err, result) {
-        if (!err) {
-            myCropDisabled = result;
-            if (myCropDisabled == false) {
-                $('#autoReinvest').checkbox('set checked');
-            } else {
-                $('#autoReinvest').checkbox('set unchecked');
-            }
-        }
-    })
-}
-
 var p3cPriceUSD = 0;
 
 function getCropInfo(onboard) {
@@ -191,28 +176,6 @@ function deployCrop(amountToBuy, referrer, selfBuy) {
         })
 }
 
-function transferAllP3CToCrop() {
-    farmContract.myCrop.call(function (err, cropAddress) {
-        alert('This is my crop ' + cropAddress)
-        p3cContract.myTokens.call(function (err, myTokens) {
-            tokens = myTokens.toNumber()
-            alert('Move this many tokens' + web3.fromWei(tokens))
-            p3cContract.transfer.sendTransaction(
-                cropAddress,
-                tokens, {
-                    from: web3.eth.accounts[0],
-                    gas: 1200011
-                },
-                function (error, result) { //get callback from function which is your transaction key
-                    if (!error) {
-                        console.log(result);
-                    } else {
-                        console.log(error);
-                    }
-                })
-        });
-    })
-}
 // This buys P3C from the crop, but with you as the referrer
 function buyFromCrop(amountToBuy, referrer) {
     farmContract.myCrop.call(function (err, cropAddress) {
@@ -235,107 +198,6 @@ function buyFromCrop(amountToBuy, referrer) {
                     };
                     alertify.success(amountToBuy + " ETC spent. Waiting for Blockchain.")
                     playSound('register');
-                } else {
-                    console.log(error);
-                }
-            })
-    })
-}
-
-// This buys P3C from the crop, but with you as the referrer
-function sellFromCrop(amountToSell) {
-    farmContract.myCrop.call(function (err, cropAddress) {
-        amount = web3.toWei(amountToSell)
-        cropAbi.at(cropAddress).sell.sendTransaction(
-            // you are the referer
-            amount, {
-                from: web3.eth.accounts[0],
-                gas: 1200011
-            },
-            function (error, result) { //get callback from function which is your transaction key
-                if (!error) {
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'Wallet', {
-                            'event_label': 'Usage',
-                            'event_category': 'SellP3C',
-                            'value': amountToSell
-                        });
-                    };
-                    alertify.success(amountToSell + " P3C Sold. Waiting for Blockchain.")
-                    console.log(result);
-                } else {
-                    console.log(error);
-                }
-            })
-    })
-}
-
-function reinvestFromCrop(referrer) {
-    farmContract.myCrop.call(function (err, cropAddress) {
-        cropAbi.at(cropAddress).reinvest.sendTransaction(
-            referrer, {
-                from: web3.eth.accounts[0],
-                gas: 560000
-            },
-            function (error, result) { //get callback from function which is your transaction key
-                if (!error) {
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'Wallet', {
-                            'event_label': 'Usage',
-                            'event_category': 'Reinvest'
-                        });
-                    };
-                    alertify.success("Reinvested P3C. Waiting for Blockchain.")
-                    console.log(result);
-                } else {
-                    console.log(error);
-                }
-            })
-    })
-}
-
-function withdrawFromCrop() {
-    farmContract.myCrop.call(function (err, cropAddress) {
-        cropAbi.at(cropAddress).withdraw.sendTransaction({
-                from: web3.eth.accounts[0],
-                gas: 560000
-            },
-            function (error, result) { //get callback from function which is your transaction key
-                if (!error) {
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'Wallet', {
-                            'event_label': 'Usage',
-                            'event_category': 'Withdraw'
-                        });
-                    };
-                    alertify.success("Withdrawing prosperity. Waiting for Blockchain.")
-                    console.log(result);
-                } else {
-                    console.log(error);
-                }
-            })
-    })
-}
-
-function transferFromCrop(destination, amountToTransfer) {
-    amount = web3.toWei(amountToTransfer)
-    farmContract.myCrop.call(function (err, cropAddress) {
-        cropAbi.at(cropAddress).transfer.sendTransaction(
-            destination,
-            amount, {
-                from: web3.eth.accounts[0],
-                gas: 150000
-            },
-            function (error, result) { //get callback from function which is your transaction key
-                if (!error) {
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'Wallet', {
-                            'event_label': 'Usage',
-                            'event_category': 'Transfer'
-                        });
-                    };
-                    alertify.success("Transfering " + amountToTransfer + " P3C to " + destination.substring(0, 7) + "...")
-                    console.log(result);
                 } else {
                     console.log(error);
                 }
