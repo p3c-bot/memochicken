@@ -53,7 +53,7 @@ $.getJSON('https://api.p3c.io/tv/', function (json) {
     let message = document.querySelector("#msg").value
     convert(params.tipAmount)
       .then(function (amount) {
-        console.log(myCropAddress)
+        alert(amount)
         streamContract.tip.sendTransaction(
           message,
           // streamer crop, this is set in stone
@@ -61,7 +61,7 @@ $.getJSON('https://api.p3c.io/tv/', function (json) {
           myCropAddress, {
             from: web3.eth.accounts[0],
             value: web3.toWei(amount),
-            gasPrice: web3.toWei('0.000000003')
+            gasPrice: web3.toWei(1, 'gwei')
           },
           function (error, result) { //get callback from function which is your transaction key
             if (!error) {
