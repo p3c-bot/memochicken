@@ -53,7 +53,6 @@ $.getJSON('https://api.p3c.io/tv/', function (json) {
     let message = document.querySelector("#msg").value
     convert(params.tipAmount)
       .then(function (amount) {
-        web3.toWei(amountToBuy)
         streamContract.tip.sendTransaction(
           message,
           // streamer crop, this is set in stone
