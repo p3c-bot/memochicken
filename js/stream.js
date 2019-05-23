@@ -1,5 +1,5 @@
 if ("web3" in window){
-  var broadcaster = web3.eth.contract(contracts.broadcaster.abi).at(contracts.broadcaster.address);
+  var streamContract = web3.eth.contract(contracts.stream.abi).at(contracts.stream.address);
 }
 
 var videoID = getUrlVars()["videoID"];
@@ -35,7 +35,7 @@ $.getJSON('https://api.p3c.io/tv/', function (json) {
   $('#youtubeComments').attr('src', chatID);
 
   (params.tipAmount)
-  document.querySelector("#done").innerHTML = "<i class='fas fa-angle-double-up'></i>" + "$" + params.tipAmount / 100 + "</a>"
+  document.querySelector("#done").innerHTML = "<i class='fas'></i>" + "$ " + params.tipAmount / 100 + "</a>"
 
   // Feed Hide/Show UI
   document.querySelector("#handle").addEventListener("click", function (e) {
@@ -54,7 +54,7 @@ $.getJSON('https://api.p3c.io/tv/', function (json) {
     convert(params.tipAmount)
       .then(function (amount) {
         console.log(myCropAddress)
-        broadcaster.purchaseBroadcast.sendTransaction(
+        streamContract.tip.sendTransaction(
           message,
           // streamer crop, this is set in stone
           params.streamerAddress,
@@ -76,16 +76,15 @@ $.getJSON('https://api.p3c.io/tv/', function (json) {
 });
 
 
-var currentBroadcast = ""
+var currentMessage = "Default"
 
-function getBroadcast() {
-  broadcaster.broadcast.call(function (err, result) {
+function getMessage() {
+  streamContract.message.call(function (err, result) {
     if (!err) {
-      change = (String(currentBroadcast) !== String(result))
+      change = (String(currentMessage) !== String(result))
       if (change) {
-        currentBroadcast = String(result)
-        alert(currentBroadcast)
-        $("#broadcast").replaceWith("<b id='broadcast' class='count blink_me'>" + currentBroadcast + "</b>")
+        currentMessage = String(result)
+        $("#broadcast").replaceWith("<b id='broadcast' class='count blink_me'>" + currentMessage + "</b>")
         $('#broadcast').transition({
           animation: 'flash',
           duration: '1s',
