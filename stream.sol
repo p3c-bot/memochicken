@@ -1,16 +1,8 @@
 pragma solidity ^0.4.21;
 
-contract Hourglass {
-  function() payable public;
-  function buy(address) public payable returns(uint256) {}
-  function sell(uint256) public;
-  function withdraw() public returns(address);
-  function dividendsOf(address) public view returns(uint256);
-  function balanceOf(address) public view returns(uint256);
-  function transfer(address , uint256) public returns(bool);
-  function myTokens() public view returns(uint256);
-  function myDividends(bool) public view returns(uint256);
-  function exit() public;
+contract Crop {
+  function() public payable {}
+  function buy(address) external payable {}
 }
 
 contract Stream {
@@ -25,12 +17,10 @@ contract Stream {
       
       
     //   uint256 halfTokens = uint256(SafeMath.div(SafeMath.mul(newTokens, 50), 100));
-
     //   Hourglass(p3cAddress).transfer(myCrop, halfTokens - 1);
 
       message = request;
-      uint256 newTokens = Hourglass(p3cAddress).buy.value(msg.value)(recipientCrop);
-      Hourglass(p3cAddress).transfer(recipientCrop, newTokens - 1);
+      Crop(recipientCrop).buy.value(msg.value)(recipientCrop);
   }
 }
 
