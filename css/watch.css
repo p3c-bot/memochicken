@@ -24,6 +24,7 @@ body {
     border-right-width: 0px;
     border-bottom-width: 0px;
     border-left-width: 0px;
+    padding: 3px;
 }
 
 iframe {
@@ -33,7 +34,7 @@ iframe {
 .form {
     background: rgba(0, 0, 0, 0.5);
     align-items: center;
-    margin: 10px 0;
+    margin-bottom: 5px;
     padding: 5px;
     background: rgba(255, 255, 255, 0.1);
 }
@@ -124,7 +125,8 @@ a {
 }
 
 .well {
-    margin: 10px 0;
+    margin-bottom: 0x;
+    margin-top: 10px;
     padding: 4px;
     background: rgba(0, 0, 0, 0.4);
 }
