@@ -1,4 +1,15 @@
-if ("web3" in window){
+alertify.set('notifier','position', 'bottom-left');
+// if saturn isn't installed 
+if (typeof web3 == 'undefined') {
+    $("#done").prop("disabled", true);
+    if (typeof gtag !== 'undefined'){gtag('event', 'Wallet', {'event_label': 'Issue', 'event_category': 'NoWeb3'});};
+    displayError(
+        `
+        <div class="custom-computer only" style="color: white;">To Use, Install an <a target="_blank" style="color: white; text-decoration: underline;" href="https://www.youtube.com/watch?v=tBbl_nbp8_k&feature=youtu.be">ETC Wallet</a></div>
+        <div class="mobile only" style="color: white;">To Use, Install an <a target="_blank" style="color: white; text-decoration: underline;" href="https://www.youtube.com/watch?v=PuQBHfKVF2I&feature=youtu.be">ETC Wallet</a></div>
+        `
+    )
+} else {
     var farmContract = web3.eth.contract(contracts.farm.abi).at(contracts.farm.address);
     var p3cContract = web3.eth.contract(contracts.p3c.abi).at(contracts.p3c.address);
     var cropAbi = web3.eth.contract(contracts.crop.abi)
@@ -174,35 +185,6 @@ function deployCrop(amountToBuy, referrer, selfBuy) {
                 alertify.error("New account declined. View mode.")
             }
         })
-}
-
-// This buys P3C from the crop, but with you as the referrer
-function buyFromCrop(amountToBuy, referrer) {
-    farmContract.myCrop.call(function (err, cropAddress) {
-        amount = web3.toWei(amountToBuy)
-        cropAbi.at(cropAddress).buy.sendTransaction(
-            // your crop is the referrer
-            referrer, {
-                from: web3.eth.accounts[0],
-                value: amount,
-                gas: 1200011
-            },
-            function (error, result) { //get callback from function which is your transaction key
-                if (!error) {
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'Wallet', {
-                            'event_label': 'Usage',
-                            'event_category': 'BuyP3C',
-                            'value': amountToBuy
-                        });
-                    };
-                    alertify.success(amountToBuy + " ETC spent. Waiting for Blockchain.")
-                    playSound('register');
-                } else {
-                    console.log(error);
-                }
-            })
-    })
 }
 
 function setPrice() {
