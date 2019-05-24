@@ -34,22 +34,6 @@ function displayError(errorString) {
     }, 4000)
 }
 
-var convert = function (amount) {
-    return new Promise(function (resolve, reject) {
-        fetch("https://min-api.cryptocompare.com/data/price?fsym=ETC&tsyms=USD")
-            .then(function (res) {
-                return res.json()
-            })
-            .then(function (currency) {
-                // ETC Price in cents
-                let rate = Number(currency.USD) * 100
-                let converted = (amount / rate)
-                resolve(converted)
-            })
-    })
-}
-
-
 $.fn.draggable = function () {
     var $this = this,
         ns = 'draggable_' + (Math.random() + '').replace('.', ''),

@@ -124,7 +124,7 @@ function getMyCropTokens() {
             change = (String(myCropTokens) !== String(result))
             myCropTokens = result;
             if (p3cPriceUSD > 0) {
-                $("#myCropValue").replaceWith("<b id='myCropValue'> ($" + (p3cPriceUSD * (web3.fromWei(myCropTokens))).toFixed(3) + ")</b>")
+                $("#myCropValue").replaceWith("<b id='myCropValue'> ($" + (p3cPriceUSD * .82 * (web3.fromWei(myCropTokens))).toFixed(3) + ")</b>")
             }
             if (change) {
                 $("#myCropTokens").replaceWith("<b id='myCropTokens'>" + numberWithCommas((web3.fromWei(myCropTokens)).toFixed(2)) + "</b>")
@@ -208,5 +208,6 @@ function buyFromCrop(amountToBuy, referrer) {
 function setPrice() {
     $.getJSON('https://api.p3c.io/chart/info', function (json) {
         p3cPriceUSD = Number(JSON.parse(JSON.stringify(json)).PriceUSD);
+        etcPriceUSD = Number(JSON.parse(JSON.stringify(json)).ETCPriceUSD);
     });
 }

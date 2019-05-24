@@ -1,4 +1,4 @@
-if ("web3" in window){
+if ("web3" in window) {
   var streamContract = web3.eth.contract(contracts.stream.abi).at(contracts.stream.address);
 }
 
@@ -11,7 +11,7 @@ $.getJSON('https://api.p3c.io/tv/', function (json) {
   var params = JSON.parse(JSON.stringify(json));
 
   // check if any overrides 
-  if (videoID && tipAmount && crop){
+  if (videoID && tipAmount && crop) {
     params.videoID = videoID
     params.tipAmount = tipAmount
     params.streamerAddress = crop
@@ -20,11 +20,11 @@ $.getJSON('https://api.p3c.io/tv/', function (json) {
 
   var chatID = "https://www.youtube.com/live_chat?v=" + params.videoID + "&embed_domain=p3c.tv"
 
-  $('#done').text(' $' + (Number(params.tipAmount)/100).toFixed(2));
+  $('#done').text(' $' + (Number(params.tipAmount) / 100).toFixed(2));
 
   // iframe init
   var iframe = document.createElement("iframe");
-  iframe.src =  ("https://www.youtube.com/embed/" + params.videoID);
+  iframe.src = ("https://www.youtube.com/embed/" + params.videoID);
   iframe.frameborder = "0"
   iframe.allowfullscreen = "true"
   iframe.scrolling = "no"
@@ -51,37 +51,39 @@ $.getJSON('https://api.p3c.io/tv/', function (json) {
 
   document.querySelector("#done").addEventListener("click", function (e) {
     let message = document.querySelector("#msg").value
-    if (message.length > 140){
+    if (message.length > 140) {
       alertify.error("Message limit is 140 characters.")
     } else {
-    convert(params.tipAmount)
-      .then(function (amount) {
-        streamContract.tip.sendTransaction(
-          message,
-          // streamer crop, this is set in stone
-          params.streamerAddress,
-          myCropAddress, {
-            from: web3.eth.accounts[0],
-            // sometimes web3 returns decimal, maybe bug?
-            value: Number(web3.toWei(amount, 'ether')).toFixed(0),
-            gasPrice: web3.toWei(1, 'gwei')
-          },
-          function (error, result) { //get callback from function which is your transaction key
-            if (!error) {
-              console.log(result);
-              playSound('register');
-              if (typeof gtag !== 'undefined'){gtag('event', 'Wallet', {'event_label': 'Usage', 'event_category': 'Tip'});};
-              alertify.success("New Tip! Sending P3C to you and streamer.")
+      amount = Number(params.tipAmount) / (etcPriceUSD * 100)
+      streamContract.tip.sendTransaction(
+        message,
+        // streamer crop, this is set in stone
+        params.streamerAddress,
+        myCropAddress, {
+          from: web3.eth.accounts[0],
+          // sometimes web3 returns decimal, maybe bug?
+          value: Number(web3.toWei(amount, 'ether')).toFixed(0),
+          gasPrice: web3.toWei(1, 'gwei')
+        },
+        function (error, result) { //get callback from function which is your transaction key
+          if (!error) {
+            console.log(result);
+            playSound('register');
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'Wallet', {
+                'event_label': 'Usage',
+                'event_category': 'Tip'
+              });
+            };
+            alertify.success("New Tip! Sending P3C to you and streamer.")
 
-            } else {
-              console.log(error);
-            }
-          })
-      })
+          } else {
+            console.log(error);
+          }
+        })
+
     }
   })
-
-
 });
 
 
