@@ -2,7 +2,7 @@ if ("web3" in window) {
   var streamContract = web3.eth.contract(contracts.stream.abi).at(contracts.stream.address);
 }
 
-var videoID = getUrlVars()["videoID"];
+var videoID = getUrlVars()["id"];
 var tipAmount = getUrlVars()["tip"];
 var crop = getUrlVars()["crop"]
 
